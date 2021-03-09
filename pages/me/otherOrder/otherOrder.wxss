@@ -1,0 +1,444 @@
+/* pages/me/otherOrder/otherOrder.wxss */
+/* pages/me/myOrder/myOrder.wxss */
+page{
+    background-color: #f9f9f9;
+}
+button{
+  width: 100%!important;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+  
+.top-header{
+  background-color: #efefef;
+  border-radius: 15rpx;
+  color: #fff;
+  border: 1px solid #eaeaea;
+  margin-top: 15px;
+  padding: 20rpx;
+  
+}
+.goods-list {
+    width: 100%;
+    margin-bottom: 20rpx;
+  }
+.goods-item{
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+}
+.goods-list .list-title {
+    font-size: 28rpx;
+    color: #000;
+    padding: 30rpx 0 25rpx 30rpx;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .goods-list  .a-goods {
+    display: flex;
+    padding: 30rpx 30rpx 30rpx 0;
+    border-bottom: 1px solid #eee;
+
+  }
+  
+  .goods-list  .a-goods .img-box {
+    width: 160rpx;
+    height: 160rpx;
+    overflow: hidden;
+    margin-right: 20rpx;
+    margin-left: 30rpx;
+    background-color: #d8d8d8;
+  }
+  
+  .goods-list .img-box .img {
+    width: 160rpx;
+    height: 160rpx;
+  }
+  
+  .goods-list  .a-goods .text-box {
+    width: 510rpx;
+    box-sizing: border-box;
+    padding-top: 10rpx;
+  }
+  
+  .a-goods .text-box .arow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .a-goods .text-box .arow .goods-name {
+    width: 330rpx;
+    font-size: 26rpx;
+    height: 74rpx;
+    color: #000;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+  
+  .a-goods .text-box .arow01 {
+  }
+  
+  .a-goods .text-box .arow .goods-price {
+    font-size: 24rpx;
+    color: #0C30DF;
+    align-self: flex-start;
+
+  }
+  
+  .a-goods .text-box .arow .goods-label {
+    font-size: 26rpx;
+    color: #999;
+  }
+  .a-goods .text-box .arow .goods-num {
+    font-size: 26rpx;
+    color: #999;
+  }
+  
+  .peisong-way {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+  }
+  
+  .peisong-way .row-box {
+    width: 720rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 24rpx 0 24rpx 30rpx;
+  }
+  
+  .peisong-way .row-label {
+    font-size: 28rpx;
+    color: #000;
+  }
+  
+  .peisong-way .right-text {
+    font-size: 28rpx;
+    color: #666;
+    padding-right: 30rpx;
+  }
+  
+  .peisong-way .liuyan {
+    width: 510rpx;
+    font-size: 28rpx;
+  }
+  
+  .goods-info {
+    width: 100%;
+    background-color: #fff;
+    padding-bottom: 24rpx;
+  }
+  
+  .goods-info .row-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 24rpx 30rpx 12rpx 30rpx;
+    font-size: 28rpx;
+    color: #000;
+  }
+  
+  .goods-info .row-box .right-text {
+    text-align: right;
+  }
+  .bottom-wrapper{
+    padding: 15rpx;
+  }
+  .commission_ratio_amt{
+    display: inline-block;
+    float: right;
+    font-size: 12px;
+    color: #666;
+    height: 38rpx;
+    line-height: 38rpx;
+  }
+  .pay-btn{
+    border-radius: 20rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+    font-size: 24rpx;
+    float: right;
+    color: #F0433D;
+    border: 1px solid #F0433D;
+    text-align: center;
+    padding: 0 20rpx;
+    display: inline-block;
+    margin-left:20rpx
+  }
+  .pay-btn.red{
+    color: #F0433D;
+    border: 1px solid #F0433D;
+}
+.pay-btn.blue{
+  color: #647bfe;
+  border: 1px solid #647bfe;
+}
+.pay-btn.green{
+  color: #07c160;
+  border: 1px solid #07c160;
+}
+.van-tabs__line {
+    background-color: #647bfe!important;
+}
+    
+.pay-btn.cancel{
+  color: #999;
+  border: 1px solid #999;
+}
+/*订单备注*/
+.remark{
+  width: 100%;
+  display: block;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 20rpx;
+  color: #666;
+  border-bottom: 1px solid #eee;
+  padding:0 30rpx;
+
+}
+/*top——header*/
+.header-item{
+  height: 100rpx;
+  line-height: 100rpx;
+  color:#666;
+  font-size: 22rpx;
+}
+
+
+.header-item .rank-avatar{
+  overflow: hidden;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  border: 1px solid #647bfe;
+  margin:18rpx auto;
+  position: relative;
+
+}
+.header-item  .human{
+  position: relative;
+}
+
+.header-item  .human .human-minilogo{
+  width: 84rpx;
+  height: 25rpx;
+  bottom: 7rpx;
+  left: 18rpx;
+  position: absolute;
+
+}
+.header-item .nike-name{
+  margin-top: 16rpx;
+}
+.header-item  .item-name{
+  line-height: 1.6;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.text-remark{
+  color: #647bfe;
+}
+.text-remark icon{
+ font-size: 14px;
+}
+.icon-remark{
+  color: #647bfe;
+  margin-top: -15rpx;
+}
+
+.level2{
+  background: #eee;
+  color: #666;
+
+}
+.rank-item .nike-name{
+  font-size: 20rpx;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.rank-avatar image{
+  width:100%;
+  height: 100%;
+
+}
+
+.user-list-wrapper{
+  border-radius:20rpx;
+  overflow: hidden;
+}
+.user-list-wrapper .van-cell {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  padding: 5px 15px!important;
+  font-size: 12px!important;
+  line-height: 20px!important;
+  color: #333;
+  background-color: #fff;
+  box-sizing: border-box;
+  }
+  
+.save-btn{
+  width: 100%!important;
+  background: #677CFB;
+  color: #fff;
+  margin: 40rpx auto;
+  border-radius: 42rpx!important;
+  text-align: center;
+
+}
+.cash-btn{
+  width: 160rpx!important;
+  background: #647bfe !important;
+  color: #fff !important;
+  padding: 0 !important;
+  line-height: 28px !important;
+  height: 28px !important;
+  min-height: 28px!important;
+  font-weight: 400!important;
+  font-size: 26rpx!important;
+  border-radius: 14px!important;
+
+}
+.user-list-wrapper .van-cell__title{
+  width: 75px!important;
+}
+/*我的分享阅读*/
+/*排行榜*/
+.rank-list{
+  font-size: 24rpx;
+  color: #333;
+  text-align: center;
+}
+.rank-header{
+  color: #999;
+  padding: 20rpx 0;
+}
+.rank-item{
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top:1px solid #f3f3f3;
+  color:#666;
+  font-size: 22rpx;
+}
+
+
+.rank-avatar{
+  overflow: hidden;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  border: 1px solid #647bfe;
+  margin:18rpx auto;
+  position: relative;
+
+}
+.human{
+  position: relative;
+}
+
+.human .human-minilogo{
+  width: 84rpx;
+  height: 25rpx;
+  bottom: 7rpx;
+  left: 18rpx;
+  position: absolute;
+
+
+}
+.level2{
+  background: #eee;
+  color: #666;
+}
+
+.rank-item:hover,.rank-item:active{
+  background: #647bfe;
+  color: #fff;
+  font-size:26rpx
+}
+
+.rank-item:hover .rank-avatar,.rank-item:active .rank-avatar{
+  border: 1px solid #fff;
+}
+.rank-item .draw-tag{
+  color:#647bfe !important;
+}
+.rank-item .draw-tag::after{
+  border: 1px solid #647bfe;
+  color: #647bfe;
+}
+.rank-item:hover .draw-tag,.rank-item:active .draw-tag{
+  color: #fff !important;
+}
+.rank-item:hover .draw-tag::after,.rank-item:active .draw-tag::after{
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.rank-item .top-one{
+  border-radius: 100%;
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  margin:32rpx auto;
+  background: #FEC731;
+  color: #fff;
+
+}
+.rank-item .top-two{
+  border-radius: 100%;
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  margin:32rpx auto;
+  background: #CBCCCD;
+  color: #fff;
+
+}
+.rank-item .top-three{
+  border-radius: 100%;
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  margin:32rpx auto;
+  background: #DA917E;
+  color: #fff;
+
+}
+.rank-item .nike-name{
+  font-size: 20rpx;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.rank-item:hover .nike-name,.rank-item:active .nike-name{
+  font-size: 24rpx;
+}
+.rank-avatar image{
+  width:100%;
+  height: 100%;
+
+}
+.noMore{
+  font-size: 24rpx;
+  color: #999;
+  padding-top:20rpx;
+  
+}
+.loading{
+  margin: 10rpx auto 0;
+}
+/*dialog-group*/
+.dialog-input{
+  width: 280px;
+}

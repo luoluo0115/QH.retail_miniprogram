@@ -1,0 +1,141 @@
+<!--pages/me/myCoupon/myCoupon.wxml-->
+<wxs module="m1">
+var dateFormatStr = function (dateStr) {
+    if(dateStr == null){
+        return '';
+    }
+  return dateStr.replace('T', ' ')
+}
+var moneyFormat = function (money) {
+  return money.toFixed(2);
+}
+
+module.exports = {
+  dateFormatStr: dateFormatStr,
+  moneyFormat: moneyFormat,
+  
+}
+</wxs>
+<!-- <view class="coupons-list">
+    <view class="coupons-item " wx:for="{{myCouponList}}"  wx:key="index"  >
+        <view class="coupons-item-box">
+            <view class="money-left">{{item.coupon_amount}}
+                <text>元</text>
+            </view>
+            <view class="money-right">
+                <view class="money-name">{{item.coupon_name}}</view>
+                <view class="money-hold">{{item.coupon_desc}}</view>
+            </view>
+            <view class="money-home">{{item.status_desc}}</view>
+        </view>
+        <view class="money-line"></view>
+        <view class="money-fooder" >{{m1.dateFormatStr(item.start_date)}}-{{m1.dateFormatStr(item.end_date)}}</view>
+    </view>
+</view> -->
+<view class="coupons-list">
+    <van-tabs active="{{ active }}" bind:change="onChange" >
+        <van-tab title="待使用" >
+            <view class="page">
+                <view class="page__bd page__bd_spacing">
+                    <block wx:if="{{myCouponList!=''}}">
+                        <view class="coupons-item " wx:for="{{myCouponList}}"  wx:key="index"   style="background-image:url('{{item.wait_image_path}}');"> 
+                            <view class="coupons-item-box">
+                                <view class="money-left"> <text>¥</text>{{item.coupon_amount}}
+                                </view>
+                                <view class="money-right">
+                                    <view class="money-hold">{{item.coupon_desc}}</view>
+                                    <view class="money-data">有效期: {{m1.dateFormatStr(item.get_time)}} - {{m1.dateFormatStr(item.end_date)}}</view>
+                                    <block wx:if="{{item.is_transfer=='Y'}}">
+                                        <view class="money-remark" bindtap="showPost" data-promotion_coupon_id="{{item.promotion_coupon_id}}" data-promotion_coupon_user_id="{{item.promotion_coupon_user_id}}">{{item.remark}}
+                                            <icon class="./iconfont/iconzhuanfa-:before icon-share" ></icon>
+                                        </view>
+                                    </block>
+                                    <block wx:if="{{is_transfer=='N'}}">
+                                        <view class="money-remark mt-5">{{item.remark}}
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="money-home" bindtap="goProduct" data-item_id="{{item.pre_product_id}}">{{item.status_desc=='未使用'?'立即使用': ''}}</view>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="empty">{{msg}}</view>
+                    </block>
+                </view>
+               
+            </view>
+          
+            
+        </van-tab>
+        <van-tab title="已使用" >
+            <view class="page__bd page__bd_spacing">
+                <block wx:if="{{myCouponList!=''}}">
+                    <view class="coupons-item " wx:for="{{myCouponList}}"  wx:key="index"   style="background-image:url('{{item.used_image_path}}');"> 
+                        <view class="coupons-item-box">
+                            <view class="money-left"> <text>¥</text>{{item.coupon_amount}}
+                            </view>
+                            <view class="money-right">
+                                <view class="money-hold">{{item.coupon_desc}}</view>
+                                <view class="money-data gray">有效期: {{m1.dateFormatStr(item.get_time)}} - {{m1.dateFormatStr(item.end_date)}}</view>
+                                <view class="money-remark">{{item.remark}}</view>
+                            </view>
+                            <view class="money-home gray">{{item.status_desc=='已使用'?'已经使用': ''}}</view>
+                        
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="empty">{{msg}}</view>
+                </block>
+            
+            </view>
+            
+        </van-tab>
+        <van-tab title="已过期" >
+            <view class="page__bd page__bd_spacing">
+                <block wx:if="{{myCouponList!=''}}">
+                    <view class="coupons-item " wx:for="{{myCouponList}}"  wx:key="index"   style="background-image:url('{{item.used_image_path}}');"> 
+                        <view class="coupons-item-box">
+                            <view class="money-left"> <text>¥</text>{{item.coupon_amount}}
+                            </view>
+                            <view class="money-right">
+                                <view class="money-hold">{{item.coupon_desc}}</view>
+                                <view class="money-data gray">有效期: {{m1.dateFormatStr(item.get_time)}} - {{m1.dateFormatStr(item.end_date)}}</view>
+                                <view class="money-remark">{{item.remark}}</view>
+                        </view>
+                            <view class="money-home gray">{{item.status_desc=='已过期'?'已经过期': ''}}</view>
+                        
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="empty">{{msg}}</view>
+                </block>
+            </view>
+           
+        </van-tab>
+    </van-tabs>
+</view> 
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />
+<van-popup show="{{ showpost }}"  bind:close="onClose" close-on-click-overlay custom-style="popup">
+     <form bindsubmit="bindSave" bindreset="cleanInput">
+            <van-cell-group custom-style="ipt-group">
+                    <van-field
+                        value="{{cell_phone}}"
+                        name="cell_phone"
+                        center
+                        clearable
+                        placeholder="请输入赠送人手机号"
+                        border="{{ false }}"
+                        use-button-slot
+                        input-class="input-phone"
+                        maxlength="11"
+                        type="digit"
+                    >
+                    <button slot="button" size="small" class="cash-btn" formType="submit">赠送</button>
+                </van-field>
+            </van-cell-group>
+    </form>
+</van-popup>

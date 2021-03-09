@@ -1,0 +1,114 @@
+// 支持es4语法
+//三位数字加逗号，取两位小数
+var filter = {
+	numberToFixed: function(val){
+            if(val>=0){
+                var str = (val*100/100).toFixed(2) + '';
+                var intSum = str.substring(0,str.indexOf("."));
+                var intSum = (intSum || 0).toString();
+                var resultIntSum = '';
+               
+                while (intSum.length > 3) {
+                    resultIntSum  = ',' + intSum.slice(-3) + resultIntSum ;
+                    intSum = intSum.slice(0, intSum.length - 3);
+                }
+                if (intSum) { resultIntSum  = intSum + resultIntSum ; }
+                var dot = str.substring(str.length,str.indexOf("."))//取到小数部分搜索
+                var ret = resultIntSum + dot;
+                return ret ;
+            }else{
+                var price=Math.abs(val); 
+                var str = (price*100/100).toFixed(2) + '';
+                var intSum = str.substring(0,str.indexOf("."));
+                var intSum = (intSum || 0).toString();
+                var resultIntSum = '';
+            
+                while (intSum.length > 3) {
+                    resultIntSum  = ',' + intSum.slice(-3) + resultIntSum ;
+                    intSum = intSum.slice(0, intSum.length - 3);
+                    
+                }
+                if (intSum) { resultIntSum  = intSum + resultIntSum ; }
+                var dot = str.substring(str.length,str.indexOf("."))//取到小数部分搜索
+                var ret = '-'+(resultIntSum+dot);
+                
+                return ret;
+            }
+            
+       
+            
+    },
+    numberToFixedNo: function(val){
+        if(val>=0){
+            var str = (val*100/100).toFixed(2)+ '';
+            var intSum = str.substring(0,str.indexOf("."));
+            var intSum = (intSum || 0).toString();
+            var resultIntSum = '';
+           
+            while (intSum.length > 3) {
+                resultIntSum  = ',' + intSum.slice(-3) + resultIntSum ;
+                intSum = intSum.slice(0, intSum.length - 3);
+            }
+            if (intSum) { resultIntSum  = intSum + resultIntSum ; }
+            var dot = str.substring(str.length,str.indexOf("."))//取到小数部分搜索
+            var ret = resultIntSum ;
+            return ret ;
+        }else{
+            var price=Math.abs(val); 
+            var str = (price*100/100).toFixed(2) + '';
+            var intSum = str.substring(0,str.indexOf("."));
+            var intSum = (intSum || 0).toString();
+            var resultIntSum = '';
+        
+            while (intSum.length > 3) {
+                resultIntSum  = ',' + intSum.slice(-3) + resultIntSum ;
+                intSum = intSum.slice(0, intSum.length - 3);
+                
+            }
+            if (intSum) { resultIntSum  = intSum + resultIntSum ; }
+            var dot = str.substring(str.length,str.indexOf("."))//取到小数部分搜索
+            var ret = '-'+(resultIntSum+dot);
+            
+            return ret;
+        }
+        
+   
+        
+    },
+    formatDate: function(date){
+        var year = date.getFullYear()
+        var month = date.getMonth() + 1
+      
+        return [year, month].map(formatNumber).join('-') + ' ' 
+    },
+    formatSummary: function(text){
+        if(text){
+            var pattern = "\\\\n";
+            var target = "\n";
+            var reg = getRegExp(pattern, "g");
+            var productSummary = text.replace(reg, target)
+            return productSummary 
+          }
+       
+    },
+    formatTime: function(date) {
+        var year = date.getFullYear()
+        var month = date.getMonth() + 1
+        var day = date.getDate()
+        var hour = date.getHours()
+        var minute = date.getMinutes()
+        var second = date.getSeconds()
+      
+        return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+      },
+
+
+}
+// 导出对外暴露的属性
+module.exports = {
+    numberToFixed: filter.numberToFixed,
+    numberToFixedNo: filter.numberToFixedNo,
+    formatDate: filter.formatDate,
+    formatSummary:filter.formatSummary ,
+    formatTime:filter.formatTime,
+}

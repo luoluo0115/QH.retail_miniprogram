@@ -1,0 +1,20 @@
+
+ <view class="page">
+    <view class="page__bd page__bd_spacing">
+        <view  class="text-left bank-title">上传银行卡</view>
+        <view class="fileImg">
+            <image class="image-card" src="{{src}}"  wx:if="{{src!=''}}"/>
+            <icon wx:else class="./iconfont/iconmn_shangchuantupian:before text-center bank-icon" ></icon>
+            
+        </view>
+        <view class="btn">
+             <view class="choose-btn" bindtap="onChang">选择文件</view>
+             <view class="up-btn {{is_up=='true'?'blue':''}}" bindtap="upload">上传认证</view>
+        </view>
+       
+    </view>
+       
+ </view>
+
+<van-toast id="van-toast" />
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>

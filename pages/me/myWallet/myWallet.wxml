@@ -1,0 +1,128 @@
+<!--pages/me/myWallet/myWallet.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<view class="after-navber">
+    <view class="header-container">
+            <image class='header-bg' src = '../../../images/mini/header-bg.png'></image>
+            <view class=" userContent">
+                 <view class="myCard">
+                    <view class="money">
+                        <block wx:if="{{myCoinPurseList.is_hidden_money=='Y'}}" > <text>¥</text> {{filter.numberToFixed(myCoinPurseList.total_coin_purse)}}</block>
+                        <block wx:if="{{myCoinPurseList.is_hidden_money=='N'}}" > *** </block>
+                    </view>
+                    <view class="money-text"><text>总金额(元)</text>
+                    <block wx:if="{{myCoinPurseList.is_hidden_money=='Y'}}" ><icon class="./iconfont/iconyanjing:before icon-eye" bindtap="hiddenEye" data-type="{{myCoinPurseList.is_hidden_money}}"></icon></block>
+                    <block wx:if="{{myCoinPurseList.is_hidden_money=='N'}}" ><icon class="./iconfont/iconbiyan1:before icon-eye" bindtap="hiddenEye" data-type="{{myCoinPurseList.is_hidden_money}}"></icon></block>
+                    </view>
+                    <van-row custom-class="coin-wrapper">
+                        <van-col span="12" custom-class="coin first">
+                            <view class="coin-title">
+                                <block wx:if="{{myCoinPurseList.is_hidden_money=='Y'}}" ><text>¥ </text> {{filter.numberToFixed(myCoinPurseList.coin_purse)}}</block>
+                                <block wx:if="{{myCoinPurseList.is_hidden_money=='N'}}" > *** </block>
+                             </view>
+                            <view class="coin-sub">可提现(元)</view>
+                        </van-col>
+                        <van-col span="12"  custom-class="coin">
+                            <view class="coin-title">
+                                <block wx:if="{{myCoinPurseList.is_hidden_money=='Y'}}" ><text>¥ </text>  {{filter.numberToFixed(myCoinPurseList.frozen_amt)}}</block>
+                                <block wx:if="{{myCoinPurseList.is_hidden_money=='N'}}" > *** </block>
+                            </view>
+                            <view class="coin-sub">暂冻结(元)</view>
+                            
+                        </van-col>
+                </van-row >
+                </view>
+            </view>
+            
+    </view>
+    <view class="page center-container">
+      
+        <view class="page__bd page__bd_spacing">
+           
+            <view class="user-list">
+                <view class="title">提现</view>
+                <form bindsubmit="bindSave" bindreset="cleanInput">
+                    <view class="user-list-wrapper" >
+                        <van-cell-group>
+                        <van-field
+                            value=""
+                            center
+                            clearable
+                            placeholder="请输入提现金额"
+                            border="{{ false }}"
+                            use-button-slot
+                            name="amount"
+                            type="digit"
+                            required
+                            
+                        >
+                            <button slot="button" size="small" class="cash-btn" formType="submit">确认提现</button>
+                        </van-field>
+                        </van-cell-group>
+                        <view class="cash-text">提现金额100元起，2个工作日到账</view>
+                    </view>
+                </form>
+                <view class="title">交易记录</view>
+                 <van-tabs active="{{ active }}" bind:change="onChange" >
+                    <van-tab title="奖励明细" >
+                        <block wx:if="{{mCoinPurseTransList!=''}}">
+                            <van-row custom-class="th">
+                                <van-col span="6">奖励金额</van-col>
+                                <van-col span="12">奖励明细</van-col>
+                                <van-col span="6">奖励时间</van-col>
+                            </van-row>
+                            <van-row custom-class="tr"  wx:for="{{mCoinPurseTransList}}" wx:key="index">
+                                <van-col span="6">{{item.trans_amount}}</van-col>
+                                <van-col span="12">{{item.trans_categroy}}</van-col>
+                                <van-col span="6">{{item.trans_time}}</van-col>
+                            </van-row>
+                       
+                        </block>
+                        <block wx:else>
+                            <view class="empty">{{msg}}</view>
+                        </block>
+                        
+                    </van-tab>
+                    <van-tab title="提现审核" >
+                         <block wx:if="{{mCoinPurseTransList!=''}}">
+                            <van-row custom-class="th">
+                                <van-col span="8">提现金额</van-col>
+                                <van-col span="8">税金</van-col>
+                                <van-col span="8">提现时间</van-col>
+                            </van-row>
+                            <van-row custom-class="tr"  wx:for="{{mCoinPurseTransList}}" wx:key="index">
+                                <van-col span="8">{{item.trans_amount}}</van-col>
+                                 <van-col span="8">{{item.individual_income_tax}}</van-col>
+                                <van-col span="8">{{item.trans_time}}</van-col>
+                            </van-row>
+                         </block>
+                        <block wx:else>
+                            <view class="empty">{{msg}}</view>
+                        </block>
+                        
+                    </van-tab>
+                    <van-tab title="提现完成" >
+                        <block wx:if="{{mCoinPurseTransList!=''}}">
+                            <van-row custom-class="th">
+                                <van-col span="8">提现金额</van-col>
+                                <van-col span="8">税金</van-col>
+                                <van-col span="8">提现时间</van-col>
+                            </van-row>
+                            <van-row custom-class="tr"  wx:for="{{mCoinPurseTransList}}" wx:key="index">
+                                <van-col span="8">{{item.trans_amount}}</van-col>
+                                 <van-col span="8">{{item.individual_income_tax}}</van-col>
+                                <van-col span="8">{{item.trans_time}}</van-col>
+                            </van-row>
+                        </block>
+                        <block wx:else>
+                            <view class="empty">{{msg}}</view>
+                        </block>
+                    </van-tab>
+                </van-tabs>
+                
+            </view>
+        </view>
+    </view>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

@@ -1,0 +1,27 @@
+/* pages/lottory/myLottoryRecord/myLottoryRecord.wxss */
+page{
+    background-color: #fff;
+}
+.record-item{
+    font-size: 24rpx;
+    padding: 20rpx 20rpx;
+    border: 1px solid #f1f1f1;
+    border-radius: 10rpx;
+    margin-bottom: 15rpx;
+    position: relative;
+}
+.name{
+    color: #333;
+}
+.time{
+    color: #999;
+    font-size: 22rpx;
+}
+.record-item-bottom{
+    position: relative;
+}
+.btn{
+    position: absolute;
+    top: -15rpx;
+    right: 0rpx;
+}

@@ -1,0 +1,49 @@
+<!--pages/lottory/myLottoryRecord/myLottoryRecord.wxml-->
+<wxs module="m1">
+    var dateFormatStr = function (dateStr) {
+        if(dateStr == null){
+            return '';
+        }
+    return dateStr.replace('T', ' ').substring(0,19)
+    }
+    var moneyFormat = function (money) {
+    return money.toFixed(2);
+    }
+
+    module.exports = {
+    dateFormatStr: dateFormatStr,
+    moneyFormat: moneyFormat,
+    
+    }
+</wxs>
+<view class="page">
+    <view class="page__bd page__bd_spacing">
+        <block wx:if="{{myLotteryRecordList!=''}}">
+            <view wx:for="{{myLotteryRecordList}}" wx:key="index" class="record-list ">
+                <view class="record-item">
+                    <van-row custom-class="record-item-top">
+                        <van-col span="14" custom-class="name">{{item.item_name}}</van-col>
+                        <van-col span="10" ></van-col>
+                    </van-row>
+                    <van-row custom-class="record-item-bottom">
+                        <van-col span="14" custom-class="time">{{m1.dateFormatStr(item.action_time)}}</van-col>
+                        <block wx:if="{{item.is_taken=='N'}}">
+                            <van-col span="10" custom-class="btn text-right"><van-tag color="#6B7EFF" plain bindtap="onLottoryGo" data-lottery_action_id="{{item.lottery_action_id}}" data-lottery_item_id="{{item.lottery_item_id}}">未领取</van-tag></van-col>
+                        </block>
+                        <block wx:else>
+                            <van-col span="10" custom-class="btn text-right"><van-tag color="#999" plain>已领取</van-tag></van-col>
+                        </block>
+                    </van-row>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="text-center time">
+                暂无中奖纪录
+            </view>
+        </block>
+    </view>
+    
+</view>
+<van-toast id="van-toast" />
+

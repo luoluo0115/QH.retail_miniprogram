@@ -1,0 +1,209 @@
+/* pages/me/shareVisitors/shareVisitors.wxss */
+/*center-container*/
+.center-container{
+    top: -60px;
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 6;
+    height: 100%;
+    position: relative;
+    min-height: 200px;
+
+}
+.center-container .page__bd{
+padding-bottom:0;
+}
+
+
+/*每周任务*/
+
+.tab-bar .van-tabs__nav{
+   background: #647bfe;
+}
+.van-hairline--top-bottom:after {
+   border-width: 0!important;
+    
+}
+
+.van-tab {
+    min-width: 0;
+    padding: 0 5px;
+    font-size: 14px;
+    line-height: 44px;
+    color: #fff!important;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-flex: 1;
+    flex: 1;
+    
+}
+
+.van-tab--active {
+    color: #fff!important;
+    font-size: 30rpx!important;
+    
+}
+
+.van-tabs__line {
+    /* transform: translateX(55.25px)!important;
+    -webkit-transform: translateX(55.25px)!important; */
+    width: auto!important;
+    background-color: transparent!important;
+    border-radius: 0!important;
+    position: absolute;
+    bottom: 0;
+    left: 11%!important;
+    z-index: 1;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 0!important;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-bottom: 6px dashed;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    margin: 0 auto;
+    background: #fff;
+    color: #fff;
+    text-align: center;
+    
+}
+/*排行榜*/
+.rank-list{
+    font-size: 24rpx;
+    color: #333;
+    text-align: center;
+}
+.rank-header{
+    color: #999;
+    padding: 20rpx 0;
+}
+.rank-item{
+    height: 100rpx;
+    line-height: 100rpx;
+    border-top:1px solid #f3f3f3;
+    color:#666;
+    font-size: 22rpx;
+}
+
+
+.rank-avatar{
+    overflow: hidden;
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+    border: 1px solid #647bfe;
+    margin:18rpx auto;
+    position: relative;
+
+}
+.human{
+    position: relative;
+}
+
+.human .human-minilogo{
+    width: 84rpx;
+    height: 25rpx;
+    bottom: 7rpx;
+    left: 18rpx;
+    position: absolute;
+
+
+}
+.human .human-minilogo2{
+    width: 84rpx;
+    height: 25rpx;
+    bottom: 7rpx;
+    left: 5rpx;
+    position: absolute;
+
+
+}
+.level2{
+    background: #eee;
+    color: #666;
+}
+
+.rank-item:hover,.rank-item:active{
+    background: #647bfe;
+    color: #fff;
+    font-size:26rpx
+}
+
+.rank-item:hover .rank-avatar,.rank-item:active .rank-avatar{
+    border: 1px solid #fff;
+}
+.rank-item .draw-tag{
+    color:#647bfe !important;
+}
+.rank-item .draw-tag::after{
+    border: 1px solid #647bfe;
+    color: #647bfe;
+}
+.rank-item:hover .draw-tag,.rank-item:active .draw-tag{
+    color: #fff !important;
+}
+.rank-item:hover .draw-tag::after,.rank-item:active .draw-tag::after{
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.rank-item .top-one{
+    border-radius: 100%;
+    width: 36rpx;
+    height: 36rpx;
+    line-height: 36rpx;
+    margin:32rpx auto;
+    background: #FEC731;
+    color: #fff;
+
+}
+.rank-item .top-two{
+    border-radius: 100%;
+    width: 36rpx;
+    height: 36rpx;
+    line-height: 36rpx;
+    margin:32rpx auto;
+    background: #CBCCCD;
+    color: #fff;
+
+}
+.rank-item .top-three{
+    border-radius: 100%;
+    width: 36rpx;
+    height: 36rpx;
+    line-height: 36rpx;
+    margin:32rpx auto;
+    background: #DA917E;
+    color: #fff;
+
+}
+.rank-item .nike-name{
+    font-size: 20rpx;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.rank-item:hover .nike-name,.rank-item:active .nike-name{
+    font-size: 24rpx;
+}
+.rank-avatar image{
+    width:100%;
+    height: 100%;
+
+}
+
+.noMore{
+    font-size: 24rpx;
+    color: #999;
+    padding-top:20rpx;
+    
+}
+.loading{
+    margin: 10rpx auto 0;
+}

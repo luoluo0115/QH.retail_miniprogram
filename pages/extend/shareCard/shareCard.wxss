@@ -1,0 +1,48 @@
+/* pages/extend/shareCard/shareCard.wxss */
+.shareme-box{
+  height: 100%;
+  margin-top: 200rpx;
+}
+.shareme-box .canvas {
+    margin: 0 auto;
+  }
+  .shareme-box .shareme-btm {
+    padding-top: 24rpx;
+    padding-bottom: 30rpx;
+    background-color: #f9f9f9;
+  }
+  .shareme-box .save-text {
+    width: 100%;
+    margin-bottom: 21rpx;
+    font-size: 26rpx;
+    line-height: 1.5;
+    color: #999;
+    text-align: center;
+  }
+  .shareme-box .save-btn-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.save-btn-box .save-btn {
+  width: 640rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    font-size: 28rpx;
+    border-radius: 32rpx;
+    text-align: center;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #6C8AFF, #4B5AE2);
+  }
+/*canvas*/
+.canvas {
+    width: 640rpx;
+    height: 351rpx;
+    z-index: 100;
+    margin: 0 auto;
+    justify-items: center;
+    
+    
+  } 
+  

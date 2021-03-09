@@ -1,0 +1,17 @@
+<!--pages/extend/shareCard/shareCard.wxml-->
+<view class="page">
+    <view class="shareme-box page__bd page__bd_spacing">
+         <!-- <view><image src="{{programCodeSrc}}"></image></view> -->
+         <canvas
+        class="canvas"
+        canvas-id="myCanvas"
+        hidden="{{canvasHidden}}" ></canvas>
+        <view class="shareme-btm">
+            <view class="save-btn-box">
+                <view class="save-btn" bindtap="save">保存图片</view>
+            </view>
+        </view>
+    </view>
+
+</view>
+    <auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>

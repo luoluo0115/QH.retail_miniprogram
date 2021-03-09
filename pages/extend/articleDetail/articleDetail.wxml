@@ -1,0 +1,159 @@
+<!--pages/extend/articleDetail/articleDetail.wxml-->
+<wxs module="m1">
+var dateFormatStr = function (dateStr) {
+    if(dateStr == null){
+        return '';
+    }
+  return dateStr.replace('T', ' ').substring(0,dateStr.indexOf('.'))
+}
+var dateFormatDay = function (dateDay) {
+    if(dateDay == null){
+        return '';
+    }
+  return dateDay.substring(0, 10)
+}
+
+
+module.exports = {
+  dateFormatStr: dateFormatStr,
+  dateFormatDay:dateFormatDay
+  
+}
+</wxs>
+ <block wx:if="{{article_source=='A'}}">
+<view class="article-wrapper" >
+    <view class="page  {{iphone}}" >
+            <view class="page__bd page__bd_spacing">
+                <view class="title">
+                    {{articleCategoryByID.article_title}}
+                </view>
+                <van-row>
+                    <van-col span="20"> 
+                        <view class="date">
+                            <text class="qh-title">企汇智能管家</text>{{m1.dateFormatDay(articleCategoryByID.publish_time)}}
+                        </view>
+                    </van-col>
+                    <van-col span="4">
+                        <block wx:if="{{commonInfo.is_follow_official_account=='N'}}">
+                            <button  class="official-go-btn no" send-message-title="小程序卡片" send-message-img="{{imgofficialGoUrl}}" show-message-card="true" send-message-path="/pages/extend/articleDetail/articleDetail?spread_id=0&user_id={{user_id}}&type=D"  open-type='contact' show-message-card plain>
+                                去关注
+                            </button>
+                        </block>
+                    </van-col>
+                
+                </van-row>
+                 <image src="{{articleCategoryByID.article_image}}"  mode="widthFix" class="img"/>
+                <view class="center">
+                        <import src="../../../wxParse/wxParse.wxml"/>
+                        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+                </view>
+                <view class="bottom">
+                    <van-row>
+                        <van-col span="8" custom-class="text-left">
+                            <icon class="./iconfont/iconyanjing:before" ></icon> {{articleCategoryByID.read_times}}
+                        </van-col>
+                        <van-col span="8" custom-class="text-left">
+                            <icon class="./iconfont/iconshare:before" ></icon> {{articleCategoryByID.share_times}}
+                        </van-col>
+                        <block wx:if="{{praiseFlag==1}}">
+                            <van-col span="8"  custom-class="red text-right" ><icon class="./iconfont/iconaixin:before" ></icon>喜欢 {{like_times}}</van-col>
+                        </block>
+                        <block wx:else>
+                            <van-col span="8" bindtap='AddSpreadAction' custom-class="text-right"><icon class="./iconfont/iconaixin:before" ></icon>喜欢 {{like_times}}</van-col>
+                        </block>
+                        
+                    </van-row>
+                </view>
+            </view>
+    </view>
+    <view class="goods-action weui-flex ">
+        <view class="weui-flex__item goods-action-icon__content  {{iphone}}" bindtap='onTapHome'>
+                 <icon class="./iconfont/iconshouye:before" ></icon> 首页
+        </view>
+         <view class="weui-flex__item-2 goods-action-button  {{iphone}}" bindtap='onTapShare'>
+             <icon class="./iconfont/iconfenxiang3:before" ></icon> 分享
+         </view>
+
+    </view>
+    <!-- <view class="icon-fix" > 
+        <van-row>
+            <van-col span="7"> 
+                <van-button custom-class="home-btn " size="small" icon="home-o" bindtap='onTapHome'>首页</van-button>
+            </van-col>
+            <van-col span="7" offset="1"><van-button custom-class="share-btn " size="small" icon="share" bindtap='onTapShare'>分享</van-button></van-col>
+            <block wx:if="{{articleCategoryByID.praiseFlag==1}}">
+                <van-col span="7" offset="1"><van-button custom-class="share-btn good-job" size="small" icon="good-job-o">已赞</van-button></van-col>
+            </block>
+             <block wx:else>
+                <van-col span="7" offset="1"><van-button custom-class="share-btn " size="small" icon="good-job-o" bindtap='AddSpreadAction'>点赞</van-button></van-col>
+            </block>
+        </van-row>
+       
+    </view> -->
+    <van-popup show="{{ show}}"  position="bottom"
+    custom-style="height: 14%;"
+    bind:close="onClose">
+        <view class="weui-flex popup-wrapper">
+            <view class="weui-flex__item weixin">
+                <button data-id="1" class='share-btn'  open-type="share"> 
+                    <icon class="./iconfont/iconweixin:before" ></icon>
+                </button>
+                <view class="wechart-text">发送好友</view>
+            </view>
+            <view class="weui-flex__item shortbill">
+                <button class='share-btn' send-message-title="{{articleCategoryByID.article_title}}" send-message-img="{{articleCategoryByID.article_image}}" show-message-card="true" send-message-path="/pages/extend/articleDetail/articleDetail?spread_id={{spread_article_id}}&user_id={{user_id}}&type=A"  open-type='contact' show-message-card plain>
+                     <icon class="./iconfont/iconpengyouquan:before" ></icon>
+                </button>
+                <view class="wechart-text">分享朋友圈</view>
+                
+            </view>
+            <view class="weui-flex__item bill">
+                <icon class="./iconfont/icongerenyewushouli:before" bindtap='onTapArticle'></icon>
+                <view>保存海报</view>
+            </view>
+            
+        </view>
+    </van-popup>
+     <van-popup show="{{ showbill}}"  position="center"
+    bind:close="onCloseBill" custom-class="bill-article" closeable >
+        <view wx:if="{{showbill==true?true:false}}" >
+             <article-pic id="myArticle" article="{{articleCategoryByID.article_title}}" bind:compontpass="compontpass"  summary="{{articleCategoryByID.summary}}" articleimage="{{articleCategoryByID.article_image}}" spread_id="{{articleCategoryByID.spread_article_id}}" read_times="{{articleCategoryByID.read_times}}" pictype="article"></article-pic>
+        </view>
+        
+    </van-popup>
+</view>
+</block>
+<block wx:if="{{article_source=='B'}}">
+    <web-view src="{{articleCategoryByID.content}}"></web-view>
+    <view class="icon-fix" bindtap='onTapShare'> 
+        <van-button custom-class="share-btn" size="small" icon="share">分享</van-button>
+         <!-- <icon class="./iconfont/iconsharesquareo:before" ></icon> -->
+    </view>
+    <van-popup show="{{ show}}"  position="bottom"
+    custom-style="height: 14%;"
+    bind:close="onClose">
+        <view class="weui-flex popup-wrapper">
+            <view class="weui-flex__item weixin">
+                <button data-id="1" class='share-btn'  open-type="share"> 
+                    <icon class="./iconfont/iconweixin:before" ></icon>
+                </button>
+                <view class="wechart-text">发送好友</view>
+            </view>
+             <view class="weui-flex__item shortbill">
+                <button class='share-btn' send-message-title="{{articleCategoryByID.article_title}}" send-message-img="{{articleCategoryByID.article_image}}" show-message-card="true" send-message-path="/pages/extend/articleDetail/articleDetail?spread_id={{spread_article_id}}&user_id={{user_id}}&type=A"  open-type='contact' show-message-card plain>
+                     <icon class="./iconfont/iconpengyouquan:before" ></icon>
+                </button>
+                <view class="wechart-text">分享朋友圈</view>
+                
+            </view>
+            <view class="weui-flex__item bill">
+                <icon class="./iconfont/icongerenyewushouli:before" bindtap='onTapArticle'></icon>
+                <view>保存海报</view>
+            </view>
+            
+        </view>
+    </van-popup>
+</block>
+
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />

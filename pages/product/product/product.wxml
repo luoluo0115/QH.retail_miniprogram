@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<!--pages/extend/index/index.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<view class="index" >
+    <view class="header-container">
+     <image class='header-bg' src = '../../../images/mini/header-bg.png'></image>
+      <view class='userContent'>
+           <view class="page">
+                <view class="page__bd page__bd_spacing avatar-wrapper">
+                        <view class="weui-flex ">
+                            <block wx:if="{{userInfo}}">
+                                <view class="weui-flex__item no-login-user">
+                                    <view class="userinfo-avatar">
+                                        <open-data  type="userAvatarUrl"></open-data>
+                                    </view> 
+                                    <image class='human-logo' src = '{{commonInfo.honor_logo}}' bindtap="bindgoHonor"></image>
+                                </view>
+                                <view class="weui-flex__item-3 userinfo-overflow">
+                                    <view class="userinfo-item">
+                                        <view class="userinfo-nickname" ><open-data  type="userNickName"></open-data></view>
+                                    </view>
+                                </view>
+                            </block>
+                            <block wx:else>
+                                    <view class="weui-flex__item no-login-user">
+                                        <view class="userinfo-avatar" bindtap="showAuth">
+                                            <open-data  type="userAvatarUrl"></open-data>
+                                        </view> 
+                                    </view>
+                                    <view class="weui-flex__item-3 userinfo-overflow">
+                                        <view class="userinfo-item">
+                                            <view class="userinfo-nickname no-userinfo-nickname" bindtap="showAuth">请登录</view>
+                                        </view>
+                                    </view>
+                            </block>
+                            
+                    
+                            <view class="weaui-flex__item user-btn" >
+                                <view class="touch"  wx:if="{{userInfo }}" bindtap="scoresign" > 
+                                    <icon class="./iconfont/icon3dtouchqiandao:before" custom-class="score-icon-left"></icon>{{signState==true?'已签到':'去签到'}}
+                                </view>
+                                <view  wx:if="{{userInfo }}">
+                                    <van-tag round type="primary" custom-class="share-btn" bindtap="shareBtnSwiper">邀请伙伴</van-tag>
+                                </view>
+                            </view>
+                        
+                    </view>
+                       
+                </view>
+            </view>
+            
+      </view>
+    </view>
+   
+    <view class="page area-container center-container">
+         <view class="area-list page__bd page__bd_spacing">
+                <view class="area-item">
+                    <view class="area-title ">
+                        <view class="area-text">服务产品</view>
+                    </view>
+                    <block wx:for="{{vedioCategoryByList}}" wx:key="key">
+                        <view class="area-banner area-banner-list weui-flex" bindtap='bindTapProductDetail' data-item_id="{{item.pre_product_id}}">
+                            <image class="banner-img" src="{{item.backgroup_image}}"  lazy-load="false" >
+                            </image>
+                        </view>
+                    </block>
+                   
+                </view>
+               
+
+            </view>
+    </view>
+</view>
+<van-popup show="{{showactive}}" bind:close="onActivityClose" custom-class="pop-bg">
+   <view class="activity-bg" >
+     <image class="" src="{{imgUrls}}" mode="widthFix" lazy-load="false" binderror="" bindload="" bindtap="onActivityGo">
+     </image>
+     <view class="active-close-btn" bindtap="onActivityClose"></view>
+   </view>
+ </van-popup>
+
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<sign-score showscore="{{showscore}}" actionTimes="{{signData.full_action_times}}" achivementScore="{{signData.achivement_score}}" accDays="{{signData.action_acc_days}}" second="{{second}}" ></sign-score>
+
+
+

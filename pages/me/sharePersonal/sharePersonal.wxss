@@ -1,0 +1,219 @@
+/* pages/me/sharePersonal/sharePersonal.wxss */
+/* pages/me/myCard/myCard.wxss */
+.user-info-1 {
+    margin-top: 50rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    height: 200rpx;
+    width: 700rpx;
+    color: #666;
+    box-shadow: 0px 0px 12rpx 1rpx #ddd;
+}
+.center-container{
+    top: -40px;
+    background: #f9f9f9;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 6;
+    height: 100%;
+    position: relative;
+    
+}
+.center-container .page__bd{
+padding-bottom:4%;
+}
+.user-list{
+    top: 160rpx;
+    position: relative;
+   
+}
+.myCard{
+    background: #fff;
+    border-radius: 25rpx;
+    margin-top:40rpx;
+    color: #333;
+    padding: 25rpx;
+    box-shadow: 0px 0px 3rpx 0rpx #ddd;
+}
+.userinfo-nickname {
+     color: #0C30DF;
+   
+}
+.wechart-btn icon{
+    font-size: 68rpx;
+
+}
+.userinfo-list .item {
+    /* margin-top: 10rpx; */
+}
+.userinfo-list .item icon{
+    position: relative;
+    top: -5rpx;
+}
+.userinfo-list  .item icon ,.userinfo-list .item-text,.userinfo-list .item-zc{
+    display: inline-block;
+
+}
+.userinfo-list .item-text{
+   font-size: 24rpx;
+    
+}
+.item-zc{
+    text-align: right;
+    color: #0C30DF;
+    position: relative;
+    right: 0 ;
+    font-size: 24rpx;
+    margin-top:64px ;
+}
+.userContent{
+    z-index: 7;
+}
+.share-text .van-cell__value{
+    -webkit-flex: 3;
+    flex: 3;
+    text-align: left;
+}
+.user-list .title{
+    font-size: 26rpx;
+    color: #666;
+    line-height: 80rpx;
+    padding-left: 10rpx;
+
+}
+.user-list-wrapper{
+    background-color: #fff;
+    border-radius:20rpx;
+    overflow: hidden;
+}
+.save-btn{
+    width: 100%!important;
+    background: #677CFB;
+    color: #fff;
+    margin: 40rpx auto;
+    border-radius: 42rpx;
+    text-align: center;
+
+}
+.form-box {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 20rpx;
+  }
+  
+  .row-wrap {
+    width: 690rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin-left: 30rpx;
+    border-bottom: 1rpx solid #eee;
+    display: flex;
+    font-size: 28rpx;
+    /*justify-content: space-between;*/
+  }
+  
+  .row-wrap .label {
+    width: 160rpx;
+    color: #000;
+  }
+  
+  .row-wrap .label-right {
+    flex: 1;
+    height: 88rpx;
+    line-height: 88rpx;
+  }
+  
+  .row-wrap .label-right input {
+    height: 100%;
+    font-size: 28rpx;
+    padding-right: 30rpx;
+  }
+  
+  .row-wrap .right-box {
+    margin-right: 30rpx;
+  }
+  
+  .arrow-right {
+    width: 15rpx;
+    height: 24rpx;
+  }
+  
+  
+  .addr-details {
+    height: auto;
+    padding: 30rpx 0;
+    margin-left: 30rpx;
+    border-bottom: 1rpx solid #eee;
+    display: flex;
+    font-size: 28rpx;
+  }
+  
+  .addr-details .label {
+    margin: auto 0 auto 0;
+    width: 160rpx;
+    color: #333;
+  }
+  
+  .addr-details textarea {
+    box-sizing: border-box;
+    width: 480rpx;
+    overflow: scroll;
+  }
+  
+  picker {
+    min-width: 20rpx;
+    height: 100%;
+    margin-right: 20rpx;
+  }
+  
+  .hui {
+    color: #777;
+  }
+  .popup-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+  }
+  .popup-wrapper .weixin,.popup-wrapper .bill {
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+  
+  }
+  .popup-wrapper .weixin icon{
+      font-size: 36px;
+      color: #51b674;
+      
+      
+  }
+  .popup-wrapper .bill icon{
+      font-size: 36px;
+      color:#0090ff;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 14px;
+      padding-right: 14px;
+      
+  }
+  .share-btn1{
+      border: none;
+      background: none;
+     
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 14px;
+      padding-right: 14px;
+      box-sizing: border-box;
+      font-size: 18px;
+      text-align: center;
+      text-decoration: none;
+      line-height: 1.2;
+      font-weight: 300;
+      
+  }
+  .bill-article{
+      background: #ebe9e9;
+  }
+  
+  

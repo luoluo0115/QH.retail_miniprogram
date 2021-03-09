@@ -1,0 +1,47 @@
+/* pages/me/certificationInfo/certificationInfo.wxss */
+.certificationInfo{
+    background-color: #6988FE;
+    background-image: url('http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=b8162764-91f5-4af4-90e1-c9835e1fe7fa');
+    border-radius: 25rpx;
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+    padding:60rpx 50rpx ;
+    color: #fff;
+    margin-top: 50rpx;
+}
+.certificationInfo.bank{
+    background-image: url('http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=c1982156-b5ae-4f16-9ce1-b3037017540b');
+    
+}
+.certificationInfo.phone{
+    background-image: url('http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=18b11eee-f25e-48e4-bd5a-207cb6bc0f52');
+    
+}
+.certificationInfo .title{
+    font-size: 36rpx;
+}
+.certificationInfo .sub{
+    font-size: 32rpx;
+}
+.certificationInfo .third{
+    font-size: 26rpx;
+}
+.userinfo-nickname{
+    top: 20rpx!important;
+}
+.BankInfo{
+    background-color: #FFA500;
+    border-radius: 25rpx;
+    padding: 50rpx 10rpx;
+}
+.PhoneInfo{
+    background-color:#786EF1;
+    border-radius: 25rpx;
+    padding: 50rpx 10rpx;
+}
+.img-nocertificat{
+    width: 146rpx;
+    height: 146rpx;
+    text-align: right;
+}

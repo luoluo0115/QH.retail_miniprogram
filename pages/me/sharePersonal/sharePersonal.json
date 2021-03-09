@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "personal-pic": "../../../components/personal-pic/personal-pic",
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "我的名片"
+}

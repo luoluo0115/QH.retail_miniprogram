@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "我的分享获客",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 10
+}

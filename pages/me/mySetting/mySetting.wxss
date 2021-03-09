@@ -1,0 +1,7 @@
+/* pages/me/mySetting/mySetting.wxss */
+.title{
+    height: 80rpx;
+    line-height: 80rpx;
+    color:#333;
+    padding-left: 20rpx;
+}

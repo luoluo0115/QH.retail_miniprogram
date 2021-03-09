@@ -1,0 +1,5 @@
+<!--pages/me/myAward/myAward.wxml-->
+<view class="img-wrapper">
+    <image class="img" mode="widthFix" src="{{img}}"  lazy-load="false" binderror="" bindload="">
+    </image>
+</view>

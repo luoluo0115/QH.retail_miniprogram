@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "auth": "../../components/auth/auth",
+    "tabwrapper": "../../components/tabwrapper/tabwrapper",
+    "sign-score": "../../components/sign-score/sign-score",
+    "step": "../../components/step/step"
+  },
+  "navigationBarTitleText": "热推",
+  "navigationBarBackgroundColor": "#677CFB",
+  "navigationBarTextStyle": "white"
+}

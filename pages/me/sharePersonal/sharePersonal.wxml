@@ -1,0 +1,86 @@
+<!--pages/me/sharePersonal/sharePersonal.wxml-->
+<view class="after-navber">
+    <view class="header-container">
+        <image class='header-bg' src = '../../../images/mini/header-bg.png'></image>
+        <view class='userContent'>
+            <view class="page">
+                <view class="page__bd page__bd_spacing avatar-wrapper">
+                    <view class="myCard">
+                        <view class="weui-flex ">
+                            <view class="weui-flex__item no-login-user">
+                                <view class="userinfo-avatar">
+                                    <open-data  type="userAvatarUrl"></open-data>
+                                </view> 
+                                <image class='human-logo' src ="{{myNamecardList.honor_logo}}"></image>
+                            </view>
+                            <view class="weui-flex__item-3">
+                                <view class="userinfo-item">
+                                    <view class="userinfo-nickname" wx:if="{{myNamecardList.dispaly_name==''}}"><open-data  type="userNickName"></open-data></view>
+                                    <view class="userinfo-nickname" wx:if="{{myNamecardList.dispaly_name!=''}}">{{myNamecardList.dispaly_name}}</view>
+                                </view>
+                            </view>
+                    
+                            <view class="weaui-flex__item user-btn" >
+                                <view class="wechart-btn"> 
+                                    <icon class="./iconfont/iconerweima:before" custom-class="score-icon-left"></icon>
+                                </view>
+                                
+                            </view>
+                        </view>
+                        <view class="weui-flex ">
+                            <view class="userinfo-list weui-flex__item-3">
+                                <view class="item">
+                                    <icon class="./iconfont/icondianhuazhengzaibohao:before" custom-class="score-icon-left"></icon>
+                                    <view class="item-text"> {{myNamecardList.mobile_phone}}</view>
+                                </view>
+                                <view class="item">
+                                    <icon class="./iconfont/icongongsi:before" custom-class="score-icon-left"></icon>
+                                    <view class="item-text"> {{myNamecardList.address}}</view>
+                                </view>
+                                <view class="item">
+                                    <icon class="./iconfont/iconxiazai19:before" custom-class="score-icon-left"></icon>
+                                    <view class="item-text"> {{myNamecardList.title}}</view>
+                                </view>
+                            </view>
+                            <view class="weui-flex__item">
+                                <view class="item-zc">{{myNamecardList.email}}</view>
+                            </view>
+                           
+                        </view>
+                    </view>
+                      <button class="save-btn" size="large" bindtap='onTapShare'>分享名片</button>
+                    
+                </view>
+            </view>
+        </view>
+    </view>
+     <van-popup show="{{ show}}"  position="bottom"
+    custom-style="height: 14%;"
+    bind:close="onClose">
+        <view class="weui-flex popup-wrapper">
+            <view class="weui-flex__item weixin">
+                <button data-id="1" class='share-btn1'  open-type="share"> 
+                    <icon class="./iconfont/iconweixin:before" ></icon>
+                </button>
+                <view>发送好友</view>
+            </view>
+            <view class="weui-flex__item bill">
+                <icon class="./iconfont/icongerenyewushouli:before" bindtap='onTapArticle'></icon>
+                <view>保存海报</view>
+            </view>
+            
+        </view>
+    </van-popup>
+     <van-popup show="{{ showbill}}"  position="center"
+    
+    bind:close="onCloseBill" custom-class="bill-article" closeable>
+        <view wx:if="{{showbill==true?true:false}}" >
+            
+             <personal-pic logo="{{myNamecardList.honor_logo}}" name="{{myNamecardList.dispaly_name}}" phone="{{myNamecardList.mobile_phone}}" address="{{myNamecardList.address}}" title="{{myNamecardList.title}}" email="{{myNamecardList.email}}" catchtouchmove="return"></personal-pic>
+        </view>
+        
+    </van-popup>
+    
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />

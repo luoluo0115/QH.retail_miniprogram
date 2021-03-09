@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "我的成长",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 10
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "获客订单",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 10
+}

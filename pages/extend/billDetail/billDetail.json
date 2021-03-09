@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "生成海报",
+  "usingComponents": {
+    "generate-pic": "../../components/generate-pic/generate-pic",
+    "auth": "../../../components/auth/auth"
+  }
+}

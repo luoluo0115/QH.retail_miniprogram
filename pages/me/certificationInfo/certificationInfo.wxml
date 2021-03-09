@@ -1,0 +1,48 @@
+<!--pages/me/certificationInfo/certificationInfo.wxml-->
+<view class="page">
+    <view class="page__bd page__bd_spacing">
+        <view class="weui-flex certificationInfo " bindtap="{{is_real_check=='Y'?'':'toFace'}}">
+            <view class="weui-flex__item-3">
+                <view class="title">身份证</view>
+                <view class="sub">{{ID==null?"":ID}}</view>
+                <view class="third" >{{name==null?"去认证>>":name}}</view>
+            </view>
+            <view class="weui-flex__item">
+                <image class="img-nocertificat" wx:if="{{is_real_check=='N'}}" src="http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=335ecadb-40d9-4d0f-818a-cbbd95a1d49c" mode="aspectFit"  binderror="" bindload="">
+                </image>
+                <image class="img-nocertificat" wx:else src="http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=7902d6c7-2b64-47eb-b10a-d54f913e62ed" mode="aspectFit"  binderror="" bindload="">
+                </image>
+               
+            </view>
+        </view>
+    
+        <view class="weui-flex certificationInfo bank" bindtap="{{is_bank_card_provide=='Y'?'':'toBank'}}">
+            <view class="weui-flex__item-3">
+                <view class="title">银行卡</view>
+                <view class="sub">{{bank_account==null?"":bank_account}}</view>
+                <view class="third">{{bank_name==null?"去添加>>":bank_name}}</view>
+            </view>
+            <view class="weui-flex__item">
+                 <image class="img-nocertificat" wx:if="{{is_bank_card_provide=='N'}}" src="http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=335ecadb-40d9-4d0f-818a-cbbd95a1d49c" mode="aspectFit"  binderror="" bindload="">
+                </image>
+                <image class="img-nocertificat" wx:else src="http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=7902d6c7-2b64-47eb-b10a-d54f913e62ed" mode="aspectFit"  binderror="" bindload="">
+                </image>
+            </view>
+        </view>
+        <view class="weui-flex certificationInfo phone" bindtap="{{phone!=null?'':'toPhone'}}">
+            <view class="weui-flex__item-3">
+                <view class="title">手机</view>
+                <view class="sub">{{phone==null?"":phone}}</view>
+                 <view class="third" wx:if="{{phone==null}}">去绑定>></view>
+                <view class="third" wx:else>{{Operator==null?"":Operator}}</view>
+            </view>
+            <view class="weui-flex__item">
+                  <image class="img-nocertificat" wx:if="{{phone==null}}" src="http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=335ecadb-40d9-4d0f-818a-cbbd95a1d49c" mode="aspectFit"  binderror="" bindload="">
+                </image>
+                <image class="img-nocertificat" wx:else src="http://minipro.51dljz.com/FileDown/DownFileOSSByType?guid=7902d6c7-2b64-47eb-b10a-d54f913e62ed" mode="aspectFit"  binderror="" bindload="">
+                </image>
+            </view>
+        </view>
+    </view>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>

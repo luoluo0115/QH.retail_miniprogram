@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "auth": "../../components/auth/auth"
+  },
+  "navigationBarTitleText": "抽奖活动"
+  
+}

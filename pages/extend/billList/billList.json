@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "全部海报",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 10
+}

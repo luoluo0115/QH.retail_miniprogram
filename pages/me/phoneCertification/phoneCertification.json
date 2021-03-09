@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "手机认证",
+    "usingComponents": {
+        "auth": "../../../components/auth/auth"
+      }
+}

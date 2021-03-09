@@ -1,0 +1,175 @@
+/* pages/me/myCoupon/myCoupon.wxss */
+.coupons-bg,.coupons-image{
+    width:100%;
+    height:400rpx;
+  }
+  .coupons-input{
+    background-color:#fff;
+    position:absolute;
+    width:80%;
+    padding:20px 20px 8px 20px;
+    top:160px;
+    left:5%;
+    border-radius:5px;
+    border:1px solid #f8b551;
+  }
+  .input{
+    border:1px solid #f8b551;
+    border-radius:3px;
+    padding:5px 10px;
+    margin-bottom:10px;
+    font-size:30rpx;
+    width:70%;
+    display:inline-block;
+  }
+  .primary {
+    background:linear-gradient(to right,#eb7073,#f4948a);
+    font-size:28rpx;
+    border-radius:4px;
+    color:#fff;
+    text-align:center;
+    width:20%;
+    display:inline-block;
+    float:right;
+    height:33px;
+    line-height:33px;
+  }
+
+  .coupons-list{
+    width:100%;
+    margin: 0 auto;
+  }
+  .coupons-item{
+    color:#fff;
+    font-size:30rpx;
+    background:linear-gradient(to right,#eb7073,#f4948a);
+    margin-top:20px;
+    /* padding-top:10px; */
+    border-radius:5px;
+    position:relative;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    overflow: hidden;
+
+  }
+  .coupons-item.gray {
+    color:#fff;
+    font-size:30rpx;
+    background:linear-gradient(to right,#aaaaaa,#999999);
+    margin-top:20px;
+    padding-top:10px;
+    border-radius:5px;
+    position:relative;
+  }
+  .coupons-item-box{
+    width:100%;
+   
+  }
+  .money-left{
+    width: 24%;
+    font-size: 48rpx;
+    float: left;
+    text-align: center;
+    height: 70px;
+    line-height: 70px;
+    color: #F6F6E6;
+
+  }
+  .money-left text{
+    font-size:28rpx;
+    padding-right:6px;
+  }
+  .money-right{
+    float:left;
+    margin-top:2%;
+  }
+  .money-name{
+    font-size:30rpx;
+    padding-bottom:5px;
+  }
+  .money-hold{
+    font-size:28rpx;
+    color:#fff;
+    margin-bottom: 5rpx;
+  }
+  .money-data{
+    font-size: 18rpx;
+    color:#E91240;
+    background: #fff;
+    padding:0 6rpx;
+  }
+  .money-remark{
+    font-size: 11px;
+  }
+  .icon-share{
+    font-size: 20px;
+  }
+  .money-remark.mt-5{
+    margin-top: 5rpx;
+  }
+  .money-data.gray{
+    color:#666;
+  }
+  .money-home{
+    float: right;
+    color: #FD1731;
+    font-size: 32rpx;
+    width: 112rpx;
+    padding: 8px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .money-home.gray{
+    color:#666;
+   
+  }
+  .gray .money-home{
+    color:#333;
+    
+  }
+  /*弹窗*/
+.popup{
+  border-radius: 8rpx!important;
+ 
+}
+.field-index--van-field{
+  width: 300px!important;
+}
+ .ipt-group{
+   width: 100%!important;
+   padding:15px!important;
+  
+ }
+ .post-btn{
+   width: 50px;
+ }
+ .input-phone{
+   
+ }
+ .cash-btn{
+  width: 160rpx!important;
+  background: #647bfe !important;
+  color: #fff !important;
+  padding: 0 !important;
+  line-height: 28px !important;
+  height: 28px !important;
+  min-height: 28px!important;
+  font-weight: 400!important;
+  font-size: 26rpx!important;
+  border-radius: 14px;
+
+}
+.cash-text{
+  color: #999;
+  text-align: left;
+  font-size: 22rpx;
+  padding: 20rpx;
+}

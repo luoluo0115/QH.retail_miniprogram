@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "product-pic": "../../components/product-pic/product-pic",
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "产品详情"
+}

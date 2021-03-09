@@ -1,0 +1,237 @@
+/* pages/extend/articleDetail/articleDetail.wxss */
+/* pages/extend/article/article.wxss */
+@import "../../../wxParse/wxParse.wxss";
+page{
+    background: #fff;
+    margin-bottom: 100rpx;
+}
+
+.page.iphone{
+    margin-bottom: 120rpx;
+}
+.img{
+    width: 100%;
+}
+.title{
+    font-size: 36rpx;
+    line-height: 1.8;
+    color: #333;
+    margin: 25rpx 0 10rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.date{
+    text-align: left;
+    color: #AAA;
+    font-size: 24rpx;
+    line-height: 1.8;
+    margin-bottom:20rpx;
+}
+.qh-title{
+    font-size: 30rpx;
+    padding-right: 10rpx;
+    color:#646464;
+}
+.read{
+    color: #717171;
+    font-size: 20rpx;
+    margin-bottom:10px;
+    border: 1px solid #717171;
+    padding: 5rpx 0rpx;
+    border-radius: 20rpx;
+    text-align: center;
+
+}
+.official-go-btn{
+    width: 100%!important;
+    text-align: center!important;
+    border: 1px solid #717171!important;
+    color: #717171!important;
+    font-size: 24rpx!important;
+    padding: 5rpx 10rpx!important;
+    border-radius: 30rpx!important;
+    font-weight: 400!important;
+
+    
+}
+.official-go-btn.no{
+    border: 1px solid #6a88ff!important;
+    color: #6a88ff!important;
+}
+/* .read.no {
+    border: 1px solid #6a88ff;
+    color: #6a88ff;
+} */
+.center{
+    font-size: 28rpx;
+    color: #666;
+}
+.center .wxParse-img{
+  width: 100%!important
+}
+.icon-fix{
+    position: fixed;
+    bottom: 10px;
+    width: 260px;
+    left: 50%;
+    margin-left:-130px;
+    text-align: center;
+    height: 50px;
+ 
+}
+.icon-fix icon{
+    font-size: 32px;
+    color: #6a88ff;
+   
+}
+.popup-wrapper .weixin,.popup-wrapper .bill,.popup-wrapper .shortbill {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+
+}
+.popup-wrapper .weixin icon{
+    font-size: 36px;
+    color: #51b674;
+    
+}
+.popup-wrapper .shortbill icon{
+    font-size: 36px;
+    color:#747BF3;
+    
+}
+.popup-wrapper .bill icon{
+    font-size: 36px;
+    color:#6a88ff;
+    
+}
+.share-btn{
+    border: none!important;
+    background: none!important;
+    display: block!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    padding-left: 14px!important;
+    padding-right: 14px!important;
+    box-sizing: border-box!important;
+    font-size: 18px!important;
+    text-align: center!important;
+    text-decoration: none!important;
+    line-height: 1.2!important;
+    font-weight: 300!important;
+    width: 100%!important;
+    top: 0;
+}
+.home-btn{
+    border: none!important;
+    background: none!important;
+    display: block!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    padding-left: 14px!important;
+    padding-right: 14px!important;
+    box-sizing: border-box!important;
+    font-size: 18px!important;
+    text-align: center!important;
+    text-decoration: none!important;
+    line-height: 1.2!important;
+    font-weight: 300!important;
+    width:100%!important;
+    border-radius: 100%!important;
+    top: 0;
+}
+.wechart-text{
+    top: -5rpx;
+    position: relative;
+
+}
+.van-button--small {
+    min-width: 50px!important;
+    padding: 0 5px!important;
+    font-size: 12px!important;
+    line-height: 34px!important;
+    height: 34px!important;
+    min-height: 34px!important;
+    background: #6a88ff!important;
+    color: #fff!important;
+    border-radius: 25px!important;
+    width: 100%!important;
+    border: 0!important;
+    font-weight: 600;
+
+    
+ }
+    
+.bill-article{
+    background: none!important;
+}
+.bottom{
+    font-size: 24rpx;
+    color: #6f7071;
+}
+.bottom icon{
+  margin-top: -10rpx;
+}
+.bottom .red{
+    color: #e93a2e;
+  }
+
+/*点赞按钮*/
+.good-job{
+    background: #f85a5e!important;
+}
+
+
+.goods-action {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: #fff;
+    text-align: center;
+   border-top:  1px solid #eee;
+    
+}
+.goods-action-icon__content {
+    height: 100%;
+    color: #333;
+    line-height: 96rpx;
+    height: 100rpx;
+}
+.goods-action-btn{
+    width: inherit!important;
+    line-height: 96rpx;
+    height: 100rpx;
+    padding: 0;
+    font-weight: 200;
+    background: #fff;
+    border: 0!important;
+}
+
+.goods-action-icon__content icon{
+    margin-bottom: 4px;
+    font-size: 20px;
+    color: #333;
+    
+}
+.goods-action-button{
+    width: 100%;
+    line-height: 96rpx;
+    height: 100rpx;
+    background: #6a88ff;
+    color: #fff;
+
+}
+.goods-action-button.iphone{
+  height: 116rpx;
+  background: #6a88ff;
+  color: #fff;
+
+}
+.goods-action-button.iphone icon{
+     font-size: 20px;
+  
+  }

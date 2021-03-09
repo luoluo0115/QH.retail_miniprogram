@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "article-pic": "../../components/article-pic/article-pic",
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "文章详情",
+  "navigationBarBackgroundColor": "#677CFB",
+  "navigationBarTextStyle": "white",
+  "component": true
+}

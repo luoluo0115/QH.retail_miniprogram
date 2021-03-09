@@ -1,0 +1,60 @@
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<view class="wrapper">
+    <view class="swiper">
+        <swiper
+            indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+            interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px"  bindchange="swiperChange">
+            <swiper-item>
+                    <view class="share-img">
+                        <image class="bg-img" src="{{imgUrls[0]}}" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                        </image>
+                        
+                        <view class="avatarUrl"> <image class="" src="{{avatarUrl}}"></image> </view>
+                        <view class="nickName"> {{nickName}}</view>
+                        <view class="programCode">
+                            <image class="programCode-img" src="{{programCodeSrc}}" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                            </image>
+                        </view>
+                        <canvas canvas-id="mycanvas_188"  class="canvas"></canvas>  
+                    </view>
+            </swiper-item>
+                <swiper-item>
+                    <view class="share-img share-2">
+
+                        <image class="bg-img" src="{{imgUrls[1]}}" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                        </image>
+                        <view class="title">截止{{daytime}}</view>
+                        <view class="sub">{{housetime}}</view>
+                        <view class="third">我已在"好享得利"赚到了</view>
+                        <view class="money">{{filter.numberToFixed(coinpurse)}}元</view>
+                        <view class="programCode">
+                            <image class="programCode-img"  src="{{programCodeSrc}}" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                            </image>
+                        </view>
+                        <view class="last">· 扫码领钱 ·</view>
+                    <canvas canvas-id="mycanvas_money"  class="canvas"></canvas>  
+                    </view>
+            </swiper-item>
+        </swiper>
+        
+    </view>
+    <view class="model-services1">
+            <view class="share-bm">
+                <view class="weui-flex popup-wrapper">
+                    <view class="weui-flex__item weixin">
+                        <button data-id="1" class='share-btn'  open-type="share"> 
+                            <icon class="./iconfont/iconweixin:before" ></icon>
+                        </button>
+                        <view class="wechart-text">发送好友</view>
+                    </view>
+                    <view class="weui-flex__item bill"  bindtap="save">
+                        <icon class="./iconfont/icongerenyewushouli:before"></icon>
+                        <view>保存海报</view>
+                    </view>
+                    
+                </view>
+            </view>
+        
+    </view>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>

@@ -1,0 +1,27 @@
+<!--pages/me/mySetting/mySetting.wxml-->
+<view>
+    <view class="title">基本信息</view>
+  <van-cell-group>
+    <van-cell title="姓名" value="{{myBasicSetupList.dispaly_name}}" />
+    <van-cell title="固话" value="{{myBasicSetupList.telephone}}" />
+    <van-cell title="手机号" value="{{myBasicSetupList.mobile_phone}}"  />
+    <van-cell title="职位" value="{{myBasicSetupList.title}}" />
+    <van-cell title="地址" value="{{myBasicSetupList.address}}" />
+    <van-cell title="邮箱" value="{{myBasicSetupList.email}}" />
+    <van-cell title="微信" value="{{myBasicSetupList.wechat}}" />
+    <van-cell title="荣誉" value="{{myBasicSetupList.honor_name}}" />
+    <van-cell title="银行卡" value="{{myBasicSetupList.bank_accountV2}}" />
+    <van-cell title="身份证号" value="{{myBasicSetupList.id_noV2}}" />
+    <van-switch-cell
+        title="首页风格"
+        checked="{{ checked}}"
+        bind:change="onChange"
+        border="true"
+        active-color="#5777ED"
+        name="is_style"
+        label="首页风格未选中时为固定，选中时为动态"
+    />
+</van-cell-group>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />

@@ -1,0 +1,134 @@
+<!--pages/me/myOrder/myOrder.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<view class="myOrder">
+    <van-tabs active="{{ active }}" bind:change="onChange" >
+        <van-tab title="未支付" >
+            <view class="goods-list">
+                <block wx:if="{{orderList!=''}}">
+                    <view class="goods-item" wx:for="{{orderList}}" wx:key="index">
+                        <view class="a-goods"  bindtap='bindTapProductDetail' data-item_id="{{item.pre_product_id}}">
+                            <view class="img-box">
+                                <image src="{{item.product_image}}" class="img" />
+                            </view>
+                            <view class="text-box">
+                                <view class="arow arow01">
+                                    <view class="goods-name">{{item.product_name}}</view>
+                                    <view class="goods-price">¥ {{filter.numberToFixed(item.need_pay_amount)}}</view>
+                                </view>
+                                <view class="arow">
+                                    <view class="goods-label">{{item.pre_product_price_value}}</view>
+                                </view>
+                            </view>
+
+                        </view>
+                        <view class="remark" wx:if="{{item.remark!=''}}">备注: {{item.remark}}</view>
+                        <van-row > 
+                            <van-col span="24" custom-class="bottom-wrapper">
+                            <block wx:if="{{item.status=='A'}}">
+                                <view class="pay-btn " bindtap="OrderPay" data-item="{{item}}">去支付</view>
+                            </block>
+                            <view class="pay-btn cancel" bindtap="onCancel" data-pre_order_id="{{item.pre_order_id}}">取消</view>
+                            </van-col>
+                        </van-row>
+                       
+                        
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="empty">{{msg}}</view>
+                </block>
+            </view>
+        </van-tab>
+        <van-tab title="已付款" >
+             <view class="goods-list">
+                <block wx:if="{{orderList!=''}}">
+                    <view class="goods-item" wx:for="{{orderList}}" wx:key="index">
+                        
+                        <view class="a-goods" bindtap='bindTapProductDetail' data-item_id="{{item.pre_product_id}}">
+                            <view class="img-box">
+                                <image src="{{item.product_image}}" class="img" />
+                            </view>
+                            <view class="text-box">
+                                <view class="arow arow01">
+                                    <view class="goods-name">{{item.product_name}}</view>
+                                    <view class="goods-price">¥ {{filter.numberToFixed(item.need_pay_amount)}}</view>
+                                </view>
+                                <view class="arow">
+                                    <view class="goods-label">{{item.pre_product_price_value}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="remark" wx:if="{{item.remark!=''}}">备注: {{item.remark}}</view>
+                         <van-row > 
+                            <van-col span="24" custom-class="bottom-wrapper">
+                               <block wx:if="{{item.status=='R'}}">
+                                    <view class="pay-btn {{item.status==S?'':'purple'}}">{{item.status_desc}}</view>
+                                    <view class="pay-btn green" wx:if="{{(item.commission_ratio_amt>0)&&(item.is_withdraw=='N')}}" bindtap="onTapdraw" data-pre_order_id="{{item.pre_order_id}}" data-pre_order_commission_id="{{item.pre_order_commission_id}}" data-type="R">可领取</view>
+                                    <view class="pay-btn cancel" wx:if="{{item.is_withdraw=='Y'}}">已领取</view>
+                                    <view class="commission_ratio_amt" wx:if="{{item.commission_ratio_amt!='0'}}">{{item.commission_category}} {{item.commission_ratio_amt}}元</view>
+                                </block>
+                                <block wx:if="{{item.status=='B'}}">
+                                   <view class="pay-btn cancel">{{item.status_desc}}</view>
+
+                                </block>
+                            </van-col>
+                        </van-row>
+                       
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="empty">{{msg}}</view>
+                </block>
+            </view>
+        </van-tab>
+        <van-tab title="已完成" >
+             <view class="goods-list">
+                <block wx:if="{{orderList!=''}}">
+                    <view class="goods-item" wx:for="{{orderList}}" wx:key="index">
+                        
+                        <view class="a-goods" bindtap='bindTapProductDetail' data-item_id="{{item.pre_product_id}}">
+                            <view class="img-box">
+                                <image src="{{item.product_image}}" class="img" />
+                            </view>
+                            <view class="text-box">
+                                <view class="arow arow01">
+                                    <view class="goods-name">{{item.product_name}}</view>
+                                    <view class="goods-price">¥ {{filter.numberToFixed(item.need_pay_amount)}}</view>
+                                </view>
+                                <view class="arow">
+                                    <view class="goods-label">{{item.pre_product_price_value}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="remark" wx:if="{{item.remark!=''}}">备注: {{item.remark}}</view>
+                        <van-row > 
+                            <van-col span="24" custom-class="bottom-wrapper">
+                                <block wx:if="{{item.status=='C'}}">
+                                    <view class="pay-btn green" wx:if="{{(item.commission_ratio_amt>0)&&(item.is_withdraw=='N')}}" bindtap="onTapdraw" data-pre_order_id="{{item.pre_order_id}}" data-pre_order_commission_id="{{item.pre_order_commission_id}}" data-type="C">可领取</view>
+                                    <view class="pay-btn {{item.status==S?'':'purple'}}">{{item.status_desc}}</view>
+                                    <view class="pay-btn cancel" wx:if="{{item.is_withdraw=='Y'}}">已领取</view>
+                                    <view class="commission_ratio_amt" wx:if="{{item.commission_ratio_amt!='0'}}">{{item.commission_category}} {{item.commission_ratio_amt}}元</view>
+                                </block>
+                                <block wx:if="{{item.status=='B'}}">
+                                   <view class="pay-btn cancel">{{item.status_desc}}</view>
+                                </block>
+                            </van-col>
+                        </van-row>
+                       
+                         <!-- <view class="pay-btn {{item.status==S?'':'purple'}}">{{item.status_desc}}</view>
+                        <view class="pay-btn green" wx:if="{{(item.commission_ratio_amt>0)&&(item.is_withdraw=='N')}}" bindtap="onTapdraw" data-pre_order_id="{{item.pre_order_id}}" data-pre_order_commission_id="{{item.pre_order_commission_id}}">可领取</view>
+                        -->
+                        
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="empty">{{msg}}</view>
+                </block>
+            </view>
+        </van-tab>
+    </van-tabs>
+    
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />
+

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "我的",
+  "navigationBarBackgroundColor": "#677CFB",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "auth": "../../../components/auth/auth",
+    "tabwrapper": "../../../components/tabwrapper/tabwrapper",
+    "sign-score": "../../../components/sign-score/sign-score"
+  }
+}

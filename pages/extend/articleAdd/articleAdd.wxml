@@ -1,0 +1,160 @@
+<!--pages/me/myOrder/myOrder.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<wxs module="m1">
+var dateFormatStr = function (dateStr) {
+    if(dateStr == null){
+        return '';
+    }
+  return dateStr.replace('T', ' ').substring(0,dateStr.indexOf('.'))
+}
+var dateFormatDay = function (dateDay) {
+    if(dateDay == null){
+        return '';
+    }
+  return dateDay.substring(0, 10)
+}
+
+
+module.exports = {
+  dateFormatStr: dateFormatStr,
+  dateFormatDay:dateFormatDay
+  
+}
+</wxs>
+<view class="article-wrapper page">
+    <van-tabs active="{{ active }}" bind:change="onChange" >
+        <van-tab title="上传文章" >
+            <view class="upload-article-top page__bd page__bd_spacing">
+                <view class="upload-title">粘贴公众号文章链接</view>
+                 <form bindsubmit="bindSaveUrl" bindreset="cleanInput">
+                    <van-field
+                        value="{{ uploadUrl }}"
+                        placeholder="请在此粘贴公众号文章链接"
+                        bind:change="onChange"
+                        border="true"
+                        name="uploadUrl"
+                        clearable="true"
+                    />
+                    <button slot="button" size="small" class="upload-btn" formType="submit">上传</button>
+                </form>
+                <navigator class="" target="" url="/pages/extend/articleGuide/articleGuide" hover-class="navigator-hover" open-type="navigate">
+                    <view class="third">如何将微信文章生成自己的文章?</view>
+                </navigator>
+            </view>
+           
+            <view class="article-connent page__bd page__bd_spacing">
+                <view class="upload-title">上传说明</view>
+                <view class="li">1.上传文章请先征得原作者的授权;</view>
+                <view class="li">2.为维护愿作则版权,如原作者追述版权,好享得利将下线用户生成文章;</view>
+                <view class="li">3.文章内容,禁止涉及销售行为,如有强烈销售性质文章,好享得利有权下线用户生成文章;</view>
+                <view class="li">4.好享得利仅提供文章生成工具与共享内容平台,用户所上传文章法律责任由上传者自负.</view>
+            </view>
+          
+
+        </van-tab>
+        <van-tab title="我的文章" >
+             <scroll-view  style='height: 100%;' scroll-y >
+                <view class="list">
+                     <block wx:if="{{listData!=''}}" >
+                                <block wx:for="{{listData}}" wx:key="key" wx:for-item="artItem">
+                                    <view class="item">
+                                        <navigator class="" target="" url="/pages/extend/articleDetail/articleDetail?spread_id={{artItem.spread_article_id}}" hover-class="navigator-hover" open-type="navigate">
+                                            <view  class="article-top">
+                                                <view class="weui-flex first">
+                                                    <view class="weui-flex__item">
+                                                        <block wx:if="{{artItem.article_image==null||artItem.article_image==''}}">
+                                                            <image class="left-img" src="../../../images/mini/img-article-01.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                                                            </image>
+                                                        </block>
+                                                        <block>
+                                                            <image class="left-img" src="{{artItem.article_abbr_image}}" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                                                            </image>
+                                                        </block>
+                                                    
+                                                    </view>
+                                                    <view class="weui-flex__item-3">
+                                                        <view class="title">
+                                                            {{artItem.article_title}}
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="weui-flex sub">
+                                                    <view class="weui-flex__item text-left">
+                                                        <view class="eye"><icon class="./iconfont/iconeye:before" ></icon>读<text>{{artItem.read_times}}</text></view>
+                                                    </view>
+                                                    <view class="weui-flex__item text-left">
+                                                        <icon class="./iconfont/iconwujieshejishigongju-:before" ></icon>享<text>{{artItem.share_times}}</text>
+                                                    </view>
+                                                    <view class="weui-flex__item text-left">
+                                                        <icon class="./iconfont/iconlike01:before" ></icon>赞<text>{{artItem.like_times}}</text>
+                                                    </view>
+                                                    <view class="weui-flex__item text-left">
+                                                        <view class="date"><icon class="./iconfont/iconbiaoqing:before" ></icon>{{m1.dateFormatDay(artItem.publish_time)}}</view>
+
+                                                    </view>
+                                                    
+                                                </view>
+                                                
+                                            </view>
+                                            <!-- <view class="article-bottom">
+                                                <van-tag plain color="#0C30DF" custom-class="share">立即分享</van-tag>
+                                            </view> -->
+                                        </navigator>
+                                        
+                                    </view>
+                                </block>
+                                <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                            </block>
+                            <view class="loading text-center"  wx:if="{{loading}}">
+                                <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                            </view>
+                             <block wx:if="{{listData==''&&!loading}}" >
+                                  <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                            </block>
+                            <!-- <block wx:if="{{listData!=''}}" >
+                                <view class="item" wx:for="{{listData}}" wx:key="key">
+                                    <navigator class="" target="" url="/pages/extend/articleDetail/articleDetail?spread_id={{item.spread_article_id}}" hover-class="navigator-hover" open-type="navigate">
+                                        <view  class="article-top"  >
+                                            <view class="weui-flex first">
+                                                <view class="weui-flex__item">
+                                                    <block wx:if="{{item.article_image==null||item.article_image==''}}">
+                                                        <image class="left-img" src="../../../images/mini/img-article-01.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                                                        </image>
+                                                    </block>
+                                                    <block>
+                                                        <image class="left-img" src="{{item.article_abbr_image}}" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                                                        </image>
+                                                    </block>
+                                                
+                                                </view>
+                                                <view class="weui-flex__item-3">
+                                                    <view class="title">
+                                                        {{item.article_title}}
+                                                    </view>
+                                                </view>
+                                            </view>
+                                            
+                                            
+                                        </view>
+                                    </navigator>
+                                    
+                                </view>
+                                <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                            </block>
+                            <view class="loading text-center"  wx:if="{{loading}}">
+                                <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                            </view>
+                             <block wx:if="{{listData==''&&!loading}}" >
+                                  <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                            </block>
+                        -->
+                </view>
+            </scroll-view>
+        </van-tab>
+       
+    </van-tabs>
+    
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />
+

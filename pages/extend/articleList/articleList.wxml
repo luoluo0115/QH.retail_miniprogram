@@ -1,0 +1,97 @@
+<!--pages/extend/articleList/articleList.wxml-->
+<wxs module="m1">
+var dateFormatStr = function (dateStr) {
+    if(dateStr == null){
+        return '';
+    }
+  return dateStr.replace('T', ' ').substring(0,dateStr.indexOf('.'))
+}
+var dateFormatDay = function (dateDay) {
+    if(dateDay == null){
+        return '';
+    }
+  return dateDay.substring(0, 10)
+}
+
+
+module.exports = {
+  dateFormatStr: dateFormatStr,
+  dateFormatDay:dateFormatDay
+  
+}
+</wxs>
+<view class="page">
+    <van-tabs active="{{ active }}" bind:change="onChange" nav-class="article" tab-active-class="article-act" sticky> 
+        <block wx:for="{{articleCategory}}" wx:key="key" wx:for-item="item"> 
+             <van-tab title="{{item.article_category}}" >
+                 <scroll-view  style='height: 100%;' scroll-y >
+                    <view class="list">
+                       
+                            <block wx:if="{{listData!=''}}" >
+                                <block wx:for="{{listData}}" wx:key="key" wx:for-item="artItem">
+                                    <view class="item">
+                                        <navigator class="" target="" url="../articleDetail/articleDetail?spread_id={{artItem.spread_article_id}}" hover-class="navigator-hover" open-type="navigate">
+                                            <view  class="article-top">
+                                                <view class="weui-flex first">
+                                                    <view class="weui-flex__item">
+                                                        <block wx:if="{{artItem.article_image==null||artItem.article_image==''}}">
+                                                            <image class="left-img" src="../../../images/mini/img-article-01.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                                                            </image>
+                                                        </block>
+                                                        <block>
+                                                            <image class="left-img" src="{{artItem.article_abbr_image}}" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                                                            </image>
+                                                        </block>
+                                                    
+                                                    </view>
+                                                    <view class="weui-flex__item-3">
+                                                        <view class="title">
+                                                            {{artItem.article_title}}
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="weui-flex sub">
+                                                    <view class="weui-flex__item text-left">
+                                                        <view class="eye"><icon class="./iconfont/iconeye:before" ></icon>读<text>{{artItem.read_times}}</text></view>
+                                                    </view>
+                                                    <view class="weui-flex__item text-left">
+                                                        <icon class="./iconfont/iconwujieshejishigongju-:before" ></icon>享<text>{{artItem.share_times}}</text>
+                                                    </view>
+                                                    <view class="weui-flex__item text-left">
+                                                        <icon class="./iconfont/iconlike01:before" ></icon>赞<text>{{artItem.like_times}}</text>
+                                                    </view>
+                                                    <view class="weui-flex__item text-left">
+                                                        <view class="date"><icon class="./iconfont/iconbiaoqing:before" ></icon>{{m1.dateFormatDay(artItem.publish_time)}}</view>
+
+                                                    </view>
+                                                    
+                                                </view>
+                                                
+                                            </view>
+                                            <!-- <view class="article-bottom">
+                                                <van-tag plain color="#0C30DF" custom-class="share">立即分享</van-tag>
+                                            </view> -->
+                                        </navigator>
+                                        
+                                    </view>
+                                </block>
+                                <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                            </block>
+                            <view class="loading text-center"  wx:if="{{loading}}">
+                                <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                            </view>
+                             <block wx:if="{{listData==''&&!loading}}" >
+                                  <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                            </block>
+                       
+                    </view>
+                 </scroll-view>
+               
+            </van-tab>
+        </block>
+    </van-tabs>
+</view>
+<view class="icon-fix-right" bindtap='bindTapAddArticle' wx:if="{{articleAddBtn}}">
+     <icon class="./iconfont/iconqianyuejilu:before icon-article " ></icon>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>

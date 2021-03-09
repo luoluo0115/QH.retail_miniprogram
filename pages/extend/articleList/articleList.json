@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "热点资讯",
+  "navigationBarBackgroundColor": "#677CFB",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 10
+}

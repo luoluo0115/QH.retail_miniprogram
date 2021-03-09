@@ -1,0 +1,104 @@
+/* pages/extend/billDetail/billDetail.wxss */
+.component-page {
+    background-color: #fff;
+  }
+  .component-page .item-box {
+    padding: 0;
+  }
+  .component-page .variable-table {
+    width: 100%;
+  }
+  .component-page .variable-table .vt-td {
+    width: 20%;
+    font-size: 28rpx;
+    padding: 20rpx 0;
+    color: #666;
+    text-align: center;
+  }
+  .component-page .variable-table .vt-head {
+    width: 100%;
+    display: flex;
+    background-color: #eee;
+  }
+  .component-page .variable-table .vt-head .vt-td {
+    color: #333;
+  }
+  .component-page .variable-table .vt-tr {
+    width: 100%;
+    display: flex;
+  }
+  .img{
+    width: 100%;
+}
+.title{
+    font-size: 18px;
+    line-height: 36px;
+}
+.date{
+    text-align: right;
+    color: #AAA;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom:10px;
+}
+.center{
+    font-size: 14px;
+    color: #666;
+}
+.icon-fix{
+     position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.icon-fix icon{
+    font-size: 32px;
+    color: #0090ff;
+   
+}
+.popup-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+}
+.popup-wrapper .weixin,.popup-wrapper .bill {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+
+}
+.popup-wrapper .weixin icon{
+    font-size: 36px;
+    color: #51b674;
+    
+    
+}
+.popup-wrapper .bill icon{
+    font-size: 36px;
+    color:#0090ff;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 14px;
+    padding-right: 14px;
+    
+}
+.share-btn{
+    border: none;
+    background: none;
+    top:0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 14px;
+    padding-right: 14px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.2;
+    font-weight: 300;
+    
+}
+.bill-article{
+    background: #ebe9e9;
+}
+

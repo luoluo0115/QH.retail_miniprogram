@@ -1,0 +1,117 @@
+<!--goods.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+
+<view class="page">
+    <view  class="banner">
+        <image src="{{vedioCategoryByList.product_image}}" class="img" mode="widthFix" ></image>
+    </view>
+    
+    <view class="weui-flex page detail-wrapper"> 
+        <view class="weui-flex__item-3">
+            <view class="product_price"><text>¥ {{vedioCategoryByList.product_price}}</text>{{vedioCategoryByList.is_param=='Y'?'起':''}} </view>
+            <view class="product_name">{{vedioCategoryByList.product_name}}</view>
+        </view>
+        <view class="weui-flex__item text-right">
+            <view class="icon-share" bindtap='onTapShare'>
+                <icon class="./iconfont/iconfenxiang:before" ></icon> 分享
+            </view>
+            
+        </view>
+    </view>
+       
+    <view class="hr"></view>
+    <view class="page ">
+        <view class="page__bd page__bd_spacing content-wrapper">
+            <import src="../../../wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:product_desc.nodes}}"/>
+        </view>
+    </view>
+    <view class="goods-action weui-flex ">
+        <view class="weui-flex__item goods-action-icon__content  {{iphone}}">
+            <button open-type="contact" class="goods-action-btn" send-message-title="{{vedioCategoryByList.product_name}}" send-message-img="{{vedioCategoryByList.product_image}}" show-message-card="true" send-message-path="/pages/product/good/good?spread_id={{pre_product_id}}&user_id={{user_id}}&type=C"  show-message-card plain>
+                 <icon class="./iconfont/iconzixun:before" ></icon> 
+                 <view>咨询</view>
+            </button>
+           
+        </view>
+         <view class="weui-flex__item-3 goods-action-button  {{iphone}}" bindtap="tobuy">
+             我要下单
+         </view>
+
+    </view>
+    <view class="show-popup" hidden="{{hideShopPopup}}">
+            <view class="popup-mask" bindtap="closePopupTap"></view>
+            <view class="popup-contents">
+                 <form bindsubmit="buyNow">
+                    <view class="pop-goods-info">
+                        <view class="pop-img-box">
+                        <image src="{{vedioCategoryByList.product_image}}" class="goods-thumbnail" />
+                        </view>
+                        <view class="pop-goods-des">
+                            <view class="pop-goods-title">{{vedioCategoryByList.product_name}}</view>
+                            <view class="pop-goods-price" wx:if="{{productPrice==''}}">¥ {{filter.numberToFixed(vedioCategoryByList.product_price)}}</view>
+                            <view class="pop-goods-price" wx:else>
+                                ¥ {{filter.numberToFixed(productPrice)}}
+                            </view>
+                            
+                        </view>
+                        <view class="pop-goods-close" bindtap="closePopupTap"></view>
+                    </view>
+                    <view class="size-label-box">
+                        <view class="size-label-box-item" wx:for="{{productParamsList}}" wx:for-item="property" wx:for-index="idx" wx:key="id"> 
+                            <view class="label">{{property.param_name}}</view>
+                            <block wx:if="{{property.param_type=='S'}}">
+                                <view class="label-item-box" >
+                                        <view  class="label-item {{item.active?'active' : '' }}" wx:for="{{property.paramDataList}}" wx:key="id"   bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.pre_product_params_id}}" data-propertyname="{{property.param_name}}" data-propertychildindex="{{index}}"
+                                        data-propertychildid="{{item.id}}" data-propertychildname="{{item.paramData}}" >
+                                        {{item.paramData}} 
+                                        </view>
+                                </view>
+                            </block>
+                            <block wx:if="{{property.param_type=='E'}}">
+                                <view class="label-item-box" >
+                                    <input  bindinput="getFillInInf" data-index="{{idx}}" name="paramname{{property.pre_product_params_id}}" class="input" type="text" placeholder="请输入{{property.param_name}},企汇续费客户请联系专属客服处理！" value="" />
+                                </view>
+                            </block>
+                        
+                        </view>
+                        
+                    </view>
+                    <view class="">
+                        <button class="popup-join-btn  {{iphone}}" formType="submit" size="large" >提交订单</button>
+                    </view>
+                    
+                    <!-- <view class="popup-join-btn" bindtap="buyNow"> 提交订单</view>  -->
+                </form>
+            </view>
+    </view>
+   
+</view>
+<van-toast id="van-toast" zIndex="1000"/>
+<van-popup show="{{ show}}"  position="bottom"
+    custom-style="height: 14%;"
+    bind:close="onClose">
+        <view class="weui-flex popup-wrapper">
+            <view class="weui-flex__item weixin">
+                <button data-id="1" class='share-btn'  open-type="share"> 
+                    <icon class="./iconfont/iconweixin:before" ></icon>
+                </button>
+                <view>发送好友</view>
+            </view>
+            <view class="weui-flex__item bill">
+                <icon class="./iconfont/icongerenyewushouli:before" bindtap='onTapGood'></icon>
+                <view>保存海报</view>
+            </view>
+            
+        </view>
+</van-popup>
+<van-popup show="{{ showbill}}"  position="center"
+bind:close="onCloseBill" custom-class="bill-article" closeable>
+    <view wx:if="{{showbill==true?true:false}}" >
+            <product-pic id="myGood" bind:compontpass="compontpass"  article="{{vedioCategoryByList.product_name}}" summary="{{vedioCategoryByList.product_summary}}" articleimage="{{vedioCategoryByList.product_image}}" catchtouchmove="return" pictype="product"></product-pic>
+    </view>
+    
+</van-popup>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-dialog id="van-dialog" />
+

@@ -1,0 +1,36 @@
+<!--pages/me/myCardSetting/myCardSetting.wxml-->
+<form bindsubmit="formSubmit">
+    <!-- <van-switch-cell
+        title="姓名"
+        checked="{{checked}}"
+        border="true"
+        active-color="#5777ED"
+        disabled	
+    /> -->
+    <block  wx:for="{{nameCardInfo}}" wx:key="index">
+        <van-switch-cell wx:if="{{ item.displayName=='手机'||item.displayName=='姓名'}}"
+            title="{{ item.displayName}}"
+            checked="{{ item.isDisplay=='Y'?true:false}}"
+            bind:change="onChangeSwitch"
+            data-item="{{item.id}}"
+            border="true"
+            active-color="#5777ED"
+            name="is_contain_{{item.id}}"
+            disabled
+        />
+        <van-switch-cell wx:else
+            title="{{ item.displayName}}"
+            checked="{{ item.isDisplay=='Y'?true:false}}"
+            bind:change="onChangeSwitch"
+            data-item="{{item.id}}"
+            border="true"
+            active-color="#5777ED"
+            name="is_contain_{{item.id}}"
+        />
+    </block>
+  <view class="tax-btn-cell page__bd_spacing">
+    <button formType="submit" class="myCard-btn" hover-class="button-hover">设置名片样式</button>
+  </view>
+</form>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />

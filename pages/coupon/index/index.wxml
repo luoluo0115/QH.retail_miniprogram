@@ -1,0 +1,37 @@
+<!--pages/coupon/index/index.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<wxs module="m1">
+var dateFormatStr = function (dateStr) {
+    if(dateStr == null){
+        return '';
+    }
+  return dateStr.replace('T', ' ')
+}
+var moneyFormat = function (money) {
+  return money.toFixed(2);
+}
+
+module.exports = {
+  dateFormatStr: dateFormatStr,
+  moneyFormat: moneyFormat,
+  
+}
+</wxs>
+<view class="coupons-list">
+    <view class="coupons-item {{item.coupon_status=='可领取'?'':'gray'}}" wx:for="{{couponList}}"  wx:key="index"  bindtap="{{item.coupon_status=='可领取'?'onGetCoupon':''}}"  data-promotion_coupon_id="{{item.promotion_coupon_id}}" style="background-image:url('{{item.wait_image_path||item.used_image_path}}');"> 
+        <view class="coupons-item-box">
+            <view class="money-left"> <text>¥</text>{{item.coupon_amount}}
+            </view>
+            <view class="money-right">
+                <view class="money-hold">{{item.coupon_desc}}</view>
+                <view class="money-data">有效期: {{m1.dateFormatStr(item.start_date)}} - {{m1.dateFormatStr(item.end_date)}}</view>
+                <view class="money-remark">{{item.remark}}</view>
+            </view>
+            <view class="money-home">{{item.coupon_status=='可领取'?'立即领取': item.coupon_status}}</view>
+           
+        </view>
+    </view>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />
+

@@ -1,0 +1,122 @@
+<!--pages/extend/videoList/videoList.wxml-->
+<view class="weui-flex"> 
+    <view class="weui-flex__item">
+           <scroll-view scroll-y scroll-with-animation class="tab-view" scroll-top="{{scrollTop}}" style="height:{{menuHeight}}px">
+                <block wx:for="{{vedioCategory}}" wx:key="index">
+                    <block wx:if="{{index==0}}">
+                        <view class="tab-bar-item {{currentTab==index ? 'active' : ''}} first" data-current="{{index}}" catchtap="swichNav">
+                            <icon class="./iconfont/iconhot:before" ></icon>
+                            <text style="font-size:10px;">{{item.vedio_category}}</text>
+                        </view>
+                    </block>
+                    <block wx:elif="{{index==1}}">
+                        <view class="tab-bar-item {{currentTab==index ? 'active' : ''}} first" data-current="{{index}}" catchtap="swichNav">
+                            <icon class="./iconfont/iconshare:before" ></icon>
+                            <text style="font-size:10px;">{{item.vedio_category}}</text>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view  class="tab-bar-item {{currentTab==index ? 'active' : ''}}" data-current="{{index}}" catchtap="swichNav">
+                        <text>{{item.vedio_category}}</text>
+                        </view>
+                    </block>
+                </block>
+            
+        </scroll-view>
+    </view>
+    <view class="weui-flex__item-3" >
+       <view class=" bannerList">
+            <scroll-view  style='height: 100%;' scroll-y >
+                <block wx:if="{{indexList==0}}">
+                        <block wx:for="{{vedioHomeImg}}" wx:key="key">
+                            <view class="video-img video-img-top" bindtap='bindTapBillDetail'   data-item_video="{{item.full_vedio}}"  data-item_image="{{item.vedio_abbr_image}}" data-item_title="{{item.vedio_title}}" data-spread_vedio_id="{{item.spread_vedio_id}}" data-item_summary="{{item.summary}}">
+                                    <image src="{{item.vedio_abbr_large_image}}" class="slide-image" />
+                                    <icon class="./iconfont/iconbofang:before" ></icon>
+                                </view>
+                        </block>
+                        <view class="category-title">本周最热</view>
+                </block>
+                <block wx:if="{{listData!=''}}" >
+                    <view class="list">
+                        <block wx:for="{{listData}}" wx:key="key">
+                            <view class="item" bindtap='bindTapBillDetail'   data-spread_vedio_id="{{item.spread_vedio_id}}" >
+                                <view class="item-bg">
+                                    <view class="video-img">
+                                        <image class="img" src="{{item.vedio_abbr_image}}"  />
+                                        <icon class="./iconfont/iconbofang:before" ></icon>
+                                    </view>
+                                    <view class="title"> 
+                                        {{item.vedio_title}}
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                    <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                </block>
+                <view class="loading text-center"  wx:if="{{loading}}">
+                    <van-loading size="32rpx"></van-loading>
+                </view>
+                    <block wx:if="{{listData==''&&!loading&&vedioHomeImg==''}}" >
+                        <view class="text-center noMore">暂无数据</view>
+                </block>
+            </scroll-view>
+           <!-- <block wx:if="{{indexList==0}}">
+                <block wx:for="{{vedioHomeImg}}" wx:key="key">
+                    <view class="video-img video-img-top" bindtap='bindTapBillDetail'   data-item_video="{{item.full_vedio}}"  data-item_image="{{item.vedio_abbr_image}}" data-item_title="{{item.vedio_title}}" data-spread_vedio_id="{{item.spread_vedio_id}}" data-item_summary="{{item.summary}}">
+                            <image src="{{item.vedio_abbr_large_image}}" class="slide-image" />
+                            <icon class="./iconfont/iconbofang:before" ></icon>
+                        </view>
+                </block>
+                <view class="category-title">本周最热</view>
+           </block>
+            <block wx:for="{{vedioCategoryByList}}" wx:key="key">
+                 <view class="item" bindtap='bindTapBillDetail'   data-spread_vedio_id="{{item.spread_vedio_id}}" >
+                    <view class="item-bg">
+                        <view class="video-img">
+                            <image class="img" src="{{item.vedio_abbr_image}}"  />
+                            <icon class="./iconfont/iconbofang:before" ></icon>
+                        </view>
+                        <view class="title"> 
+                            {{item.vedio_title}}
+                        </view>
+                    </view>
+                    
+                </view>
+               
+            </block> -->
+            
+        </view>
+    </view>
+  
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<!-- <view class="weui-flex"> 
+    <view class="weui-flex__item">
+            <van-badge-group bind:change="onChange" custom-class="group">
+                <block wx:for="{{vedioCategory}}" wx:key="item">
+                    <van-badge title="{{item.vedio_category}}" custom-class="badge-item"/>
+                </block>
+            </van-badge-group>
+    </view>
+    <view class="weui-flex__item-3" >
+        <view class=" bannerList">
+            <block wx:for="{{vedioCategoryByList}}" wx:key="key">
+                <view class="item" bindtap='bindTapBillDetail'   data-item_video="{{item.full_vedio}}"  data-item_image="{{item.vedio_abbr_image}}" data-item_title="{{item.vedio_title}}" data-item_vedio_id="{{item.spread_vedio_id}}" >
+                    <view class="item-bg">
+                        <view class="video-img">
+                            <image class="img" src="{{item.vedio_abbr_image}}"  />
+                            <icon class="./iconfont/iconbofang:before" ></icon>
+                        </view>
+                        <view class="title"> 
+                            {{item.vedio_title}}
+                        </view>
+                    </view>
+                    
+                </view>
+            </block>
+            
+        </view>
+    </view>
+  
+</view> -->

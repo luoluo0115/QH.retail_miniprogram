@@ -1,0 +1,52 @@
+<!-- 组件遮罩引导 -->
+<view class='page' hidden='{{modalHidden}}'>
+  <view class='conts'>
+  <!--*****************************组件初始化小程序0立即体验 ***************************-->
+    <view class='modules_top' wx:if="{{pract_id==0}}">
+      <image src='{{read_img}}' class='modules_red_img0' bindtap='btnmodule2'></image>
+    </view>
+    <!--*****************************组件初始化小程序1授权 ***************************-->
+    <view class='modules_top' wx:if="{{pract_id==1}}">
+      <view class="userinfo-avatar">
+        <block wx:if="{{modalAuthshow=='false'}}">
+          <open-data  type="userAvatarUrl" ></open-data>
+        </block>
+        <block wx:else>
+          <view bindtap="showAuth">
+              <open-data  type="userAvatarUrl" ></open-data>
+          </view>
+        </block>
+          
+      </view> 
+      <image src='{{read_img}}' class='modules_red_img1' bindtap='btnmodule3'></image>
+    </view>
+ 
+    <!--*****************************组件初始化小程序2热推 ***************************-->
+    <view class='modules_bottom2' wx:if="{{pract_id==2}}">
+      <image src='{{read_img}}' class='modules_red_img2' bindtap='btnmodule4'></image>
+    </view>
+ 
+    <!--*****************************组件初始化小程序2产品 ***************************-->
+  
+    <view class='modules_bottom2' wx:if="{{pract_id==5}}">
+      <image src='{{read_img}}' class='modules_red_img3' bindtap='btnmodule5'></image>
+    </view>
+    <!--*****************************组件初始化小程序3咨询 ***************************-->
+  
+    <view class='modules_bottom2' wx:if="{{pract_id==6}}">
+      <image src='{{read_img}}' class='modules_red_img4' bindtap='btnmodule6'></image>
+    </view>
+     <!--*****************************组件初始化小程序4成就 ***************************-->
+  
+    <view class='modules_bottom2' wx:if="{{pract_id==7}}">
+      <image src='{{read_img}}' class='modules_red_img5' bindtap='btnmodule7'></image>
+    </view>
+      <!--*****************************组件初始化小程序5我的 ***************************-->
+  
+    <view class='modules_bottom2' wx:if="{{pract_id==8}}">
+      <image src='{{read_img}}' class='modules_red_img6' bindtap='btnmodule8'></image>
+    </view>
+    
+   
+  </view>
+</view>

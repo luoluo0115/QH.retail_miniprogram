@@ -1,0 +1,39 @@
+<van-popup show="{{ showscore }}" bind:close="onClose" custom-class="popbg" custom-style=" width: 300px;height: 440px;">
+  <view class="page">
+    <view class="page__bd page__bd_spacing  score">
+      <view class="score-top">
+        <view class="title">
+              签到成功
+        </view>
+        <view class="sub">
+          已连续签到{{accDays}}天
+        </view>
+      </view>
+      <view class="score-center">
+        <view class="title">
+              今日获得{{achivementScore}}经验值
+        </view>
+        <view class="sub">
+          再签{{(actionTimes-accDays)==0?'7':(actionTimes-accDays)}}天获得额外成就
+        </view>
+        <view class="score-list weui-flex ">
+          <block wx:for="{{actionTimes}}" wx:key="index">
+            <view class="score-item weui-flex__item  {{accDays>=index+1?'score-item-ative':''}}" >
+              <text>{{min+index}}</text>
+
+              <icon class="{{accDays>=index+1?'./iconfont/iconduihao:before':'./iconfont/iconjifen1:before '}}" ></icon>
+            </view>
+          </block>
+         
+          
+        </view>
+       <view class="score-bm">
+          <view class="score-btn" bindtap="onClose">知道啦</view>
+       </view>
+        
+      </view>
+    </view>
+  </view>
+  
+
+</van-popup>

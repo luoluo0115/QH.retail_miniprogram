@@ -1,0 +1,40 @@
+<wxs module="filter" src="../../utils/money.wxs"></wxs>
+<view class="tab-wrapper">
+   <view class="weui-grids">
+      
+      <block wx:if="{{(reccount+recorderqty)>0}}">
+            <block wx:if="{{recorderqty>0}}">
+                  <navigator url="/pages/me/myOrder/myOrder?status=R" class="weui-grid" hover-class="weui-grid_active">
+                        <view class="weui-grid__label price" >{{filter.numberToFixed(acc_commission_amt)}}</view>
+                        <view class="weui-grid__label ">累计奖金(元)
+                              <view class="red" > </view>
+                        </view>
+                  </navigator>
+            </block>
+            <block wx:else>
+                  <navigator url="/pages/me/myExtend/myExtend?active=1&checkTitle=我的获客" class="weui-grid" hover-class="weui-grid_active">
+                        <view class="weui-grid__label price" >{{filter.numberToFixed(acc_commission_amt)}}</view>
+                        <view class="weui-grid__label ">累计奖金(元)
+                              <view class="red" > </view>
+                        </view>
+                  </navigator>
+            </block>
+      </block>
+      <block wx:else>
+            <navigator url="/pages/me/myWallet/myWallet" class="weui-grid" hover-class="weui-grid_active">
+                  <view class="weui-grid__label price" >{{filter.numberToFixed(acc_commission_amt)}}</view>
+                  <view class="weui-grid__label ">累计奖金(元)</view>
+            </navigator>
+      </block>
+      <navigator url="/pages/me/myExtend/myExtend?active=1&checkTitle=我的获客" class="weui-grid" hover-class="weui-grid_active">
+            <view class="weui-grid__label price">{{totalcust}}</view>
+            <view class="weui-grid__label">累计获客
+            </view>
+      </navigator>
+      <navigator url="/pages/me/myExtend/myExtend?active=0&checkTitle=我的经验" class="weui-grid" hover-class="weui-grid_active">
+            <view class="weui-grid__label price">{{filter.numberToFixedNo(achivementscore)}}</view>
+            <view class="weui-grid__label">经验值(点)</view>
+      </navigator>
+   </view>
+</view>
+

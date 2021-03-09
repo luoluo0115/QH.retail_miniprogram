@@ -1,0 +1,39 @@
+<view class="fist-step" wx:if="{{isID}}" >
+    <van-cell-group>
+      <van-field
+        value="{{ username }}"
+        required
+        clearable
+        label="姓名"
+        placeholder="请输入姓名"
+        bind:change="nameInput"
+        
+      />
+
+      <van-field
+        value="{{ IDCard }}"
+        type="idcard"
+        label="身份证号"
+        placeholder="请输入身份证号"
+        required
+        bind:change="NumberInput"
+      />
+    </van-cell-group>
+    <view class="page center-container">
+        <view class="page__bd page__bd_spacing">
+          <view class="next-btn" bindtap="OnChange">
+            下一步
+          </view>
+        </view>
+    </view>
+
+</view>
+<block wx:if="{{iscerame}}">
+    <view  class="certification">
+      <camera  device-position="front" flash="off" binderror="error"  class="camera"></camera>
+    </view>
+
+</block>
+<van-toast id="van-toast" />
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+

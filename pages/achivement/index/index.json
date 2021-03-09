@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "auth": "../../components/auth/auth"
+  },
+  "navigationBarTitleText": "成就",
+  "navigationBarBackgroundColor": "#677CFB",
+  "navigationBarTextStyle": "white"
+}

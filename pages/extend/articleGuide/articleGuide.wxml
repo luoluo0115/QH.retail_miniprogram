@@ -1,0 +1,16 @@
+<!--pages/extend/articleGuide/articleGuide.wxml-->
+<view class="page">
+    <view class="page__bd page__bd_spacing">
+        <view class="title">如何获取文章链接地址</view>
+        <view class="sub">1.在你浏览公众号文章时，点击右上角【…】</view>
+        <image class="img" src="{{guideUrl01}}" mode="widthFix" lazy-load="false" binderror="" bindload="">
+        </image>
+        <view class="sub">2.在弹岀菜单中选择复制链接</view>
+        <image class="img" src="{{guideUrl02}}" mode="widthFix" lazy-load="false" binderror="" bindload="">
+        </image>
+        <view class="sub">3.将文章链接粘贴到输入框</view>
+        <image class="img" src="{{guideUrl03}}" mode="widthFix" lazy-load="false" binderror="" bindload="">
+        </image>
+    </view>
+   
+</view>

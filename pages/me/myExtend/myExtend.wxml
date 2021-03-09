@@ -1,0 +1,135 @@
+<!--pages/me/myExtend/myExtend.wxml-->
+<!--pages/achivement/index/index.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<view class="index" >
+    <view class="page area-container">
+        <van-tabs animated class="tab-bar" active="{{ active }}" bind:change="onChange" sticky>
+            <van-tab title="我的经验" >
+                <scroll-view  style='height: 100%;' scroll-y >
+                    <view class="page__bd page__bd_spacing rank-list">
+                        <van-row custom-class="rank-header" >
+                            <van-col span="4">分享类别</van-col>
+                            <van-col span="6"  >分享名称</van-col>
+                            <van-col span="6"  >经验值</van-col>
+                            <van-col span="8"  >分享时间</van-col>
+                            
+                        </van-row>
+                        <!-- 循环列表 -->
+                        <block wx:if="{{listData!=''}}">
+                            <van-row custom-class="rank-item" wx:for="{{listData}}" wx:key="index">
+                                <van-col span="4" custom-class="text">{{item.spread_category}}</van-col>
+                                <van-col span="6"  custom-class="text">{{item.achivement_name}}</van-col>
+                                <van-col span="6"  custom-class="text">{{item.achivement_score}}</van-col>
+                                <van-col span="8" custom-class="text">{{item.spread_time}}</van-col>
+                            </van-row >
+                            <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                        </block>
+                        <view class="loading text-center"  wx:if="{{loading}}">
+                            <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                        </view>
+                            <block wx:if="{{listData==''&&!loading}}" >
+                                <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                        </block>
+                    </view>
+                </scroll-view>
+            </van-tab>
+            <van-tab title="我的获客">
+                <scroll-view  style='height: 100%;' scroll-y >
+                    <view class="page__bd page__bd_spacing rank-list">
+                        <van-row custom-class="rank-header">
+                            <van-col span="4">头像</van-col>
+                            <van-col span="4">昵称</van-col>
+                            <van-col span="5">加入时间</van-col>
+                            <van-col span="4">
+                                <view class="item-sortbar {{activeScore}}" bindtap="bindActiveType" data-type='achivement_score' data-index="1">
+                                    <text>经验值</text>
+                                    <view class="item-icon">
+                                        <icon class="./iconfont/iconshangjiantoushixinxiao:before icon-up {{desc=='asc'?'active':''}}"></icon>
+                                        <icon class="./iconfont/iconxiajiantoushixinxiao:before icon-down {{desc=='desc'?'active':''}}"></icon>
+                                    </view>
+                                    
+                                </view>
+                            </van-col>
+                            <van-col span="7">
+                                <view class="item-sortbar {{activeAmt}} Amt" bindtap="bindActiveType" data-type='acc_commission_amt' data-index="2">
+                                    <text>贡献额</text>
+                                    <view class="item-icon item-icon_amt">
+                                        <icon class="./iconfont/iconshangjiantoushixinxiao:before icon-up {{desc=='asc'?'active':''}}"></icon>
+                                        <icon class="./iconfont/iconxiajiantoushixinxiao:before icon-down {{desc=='desc'?'active':''}}"></icon>
+                                    </view>
+                                </view>
+                            </van-col>
+                        
+                        </van-row>
+                        <block wx:if="{{listDataVisitors!=''}}">
+                            <!-- 循环列表 -->
+                            <van-row custom-class="rank-item {{item.user_level=='1'?'level1':'level2'}}" wx:for="{{listDataVisitors}}" wx:key="index" bindtap="goOtherOrder" data-other_id="{{item.user_id}}" data-other_active="1"> 
+                                <van-col span="4" custom-class="human">
+                                    <view class="rank-avatar">
+                                        <image src="{{item.logo}}"/>
+                                    </view>
+                                    <image class='human-minilogo' src = '{{item.honor_logo}}'></image>
+                                </van-col>
+                                <van-col span="4">
+                                    <view class="nike-name">
+                                        {{item.dispaly_name}}
+                                    </view>
+                                </van-col>
+                                <van-col span="5" custom-class="nike-name"> {{item.join_time}}</van-col>
+                                <van-col span="4" custom-class="nike-name "> {{item.achivement_score}}</van-col>
+                                <van-col span="7" custom-class="price">{{filter.numberToFixed(item.acc_commission_amt)}}<view class="tag" wx:if="{{item.count>0}}" >{{item.count}}</view></van-col>
+                                
+                            </van-row >
+                        <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                        </block>
+                        <view class="loading text-center"  wx:if="{{loading}}">
+                            <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                        </view>
+                            <block wx:if="{{listDataVisitors==''&&!loading}}" >
+                                <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                        </block>
+                    </view>
+                </scroll-view>
+            </van-tab>
+             <van-tab title="我的分享">
+                <scroll-view  style='height: 100%;' scroll-y >
+                    <view class="page__bd page__bd_spacing rank-list">
+                        <van-row custom-class="rank-header">
+                            <van-col span="11">分享标题</van-col>
+                            <van-col span="5">类别</van-col>
+                            <van-col span="4">阅读</van-col>
+                            <van-col span="4">获客</van-col>
+
+                        </van-row>
+                        <block wx:if="{{listDataShare!=''}}">
+                            <!-- 循环列表 -->
+                            <van-row custom-class="rank-item " wx:for="{{listDataShare}}" wx:key="index" bindtap="goShareVisitors" data-spread_id="{{item.spread_id}}" data-spread_category="{{item.spread_category}}" > 
+                                <van-col span="11" custom-class="text-left nike-name share-title">
+                                    <text > {{item.article_title}}</text>
+                                </van-col>
+                                <van-col span="5">
+                                        {{item.spread_category}}
+                                </van-col>
+                                <van-col span="4">
+                                        {{item.read_qty}}
+                                </van-col>
+                                <van-col span="4" > {{item.spread_qty}}</van-col>
+                                
+                            </van-row >
+                            <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                        </block>
+                        <view class="loading text-center"  wx:if="{{loading}}">
+                            <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                        </view>
+                            <block wx:if="{{listDataShare==''&&!loading}}" >
+                                <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                        </block>
+                    </view>
+                </scroll-view>
+            </van-tab>
+        </van-tabs>
+    </view>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />
+

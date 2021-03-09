@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "上传文章",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 10
+
+}

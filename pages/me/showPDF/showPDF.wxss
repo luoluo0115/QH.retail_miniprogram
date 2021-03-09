@@ -1,0 +1,4 @@
+/* pages/me/showPDF/showPDF.wxss */
+.loading{
+    margin: 10rpx auto 0;
+}

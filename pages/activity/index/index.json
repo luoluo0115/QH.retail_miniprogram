@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "新手活动",
+  "navigationBarBackgroundColor": "#cf2929",
+  "navigationBarTextStyle": "white"
+}

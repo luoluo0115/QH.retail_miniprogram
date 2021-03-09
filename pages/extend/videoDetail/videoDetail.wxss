@@ -1,0 +1,106 @@
+/* pages/extend/videoDetail/videoDetail.wxss */
+page{
+    background: #000;
+}
+
+.video-wrapper{
+    margin-bottom: 10px;
+/*    
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; */
+  
+
+
+}
+video{
+    width: 100%;
+    /* position: static;
+    margin-top: -40px; */
+}
+.title{
+    font-size: 14px;
+    color: #fff;
+    line-height: 21px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    align-items: center;
+    display: flex;
+
+}
+.video-btn{
+    width: 60px!important;
+    line-height: 36px!important;
+    height: 36px!important;
+    min-height: 36px!important;
+    float: right;
+    font-weight: 400!important;
+
+}
+
+.btn-area{
+    /* position: fixed;
+    bottom: 0; */
+    width: 100%;
+
+}
+.share-btn1{
+    border: none!important;
+    background: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1.2;
+    font-weight: 300;
+    padding: 0;
+    width: 72rpx!important;
+    float: right;
+
+
+    
+}
+icon.wechart{
+    font-size: 28px;
+    color: #51b674;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+}
+.summary{
+    font-size: 26rpx;
+    color: #fff;
+    line-height: 44rpx;
+    /* background: #fff; */
+    border-radius: 15rpx;
+
+}
+.summary .wxParse-p,.summary  .wxParse-span{
+    background-color: #000!important;
+    color: #aaa!important;
+    font-size: 22rpx!important;
+}
+.summary .wxParse-a{
+    background-color: #000!important;
+    font-size: 22rpx!important;
+}
+/*分享朋友圈*/
+
+icon.pyq {
+    font-size: 28px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color:#747BF3;
+    
+}
+

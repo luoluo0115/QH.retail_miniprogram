@@ -1,0 +1,62 @@
+.registed{
+    margin-top: 30%;
+}
+.registed .title{
+    margin-bottom: 5%
+}
+.registed .van-cell__title{
+    min-width: 60px!important;
+    max-width: 60px!important;
+
+}
+.register-btn{
+    margin-top: 20%;
+    display: block;
+    
+}
+.register-btn button{
+    background: #6823FB;
+    color:#fff
+}
+.page{
+    background-color:#fff ;
+    padding-bottom: 4%;
+}
+.bank-title{
+    font-size: 14px;
+    color: #666;
+    height: 64rpx;
+    line-height: 64rpx;
+}
+.goBtn{
+    width: 100%;
+    height: 72rpx;
+    line-height: 72rpx;
+    border-radius: 15rpx;
+    color: #fff;
+    background-color: #6988FE;
+    border: 1px solid rgb(115, 142, 252);
+    text-align: center;
+    font-size: 28rpx;
+    display: inline-block;
+    margin: 40rpx 0 ;
+}
+.button{
+    width: 178rpx!important;
+    background: #6988FE !important;
+    color: #fff !important;
+    padding: 0 !important;
+    line-height: 56rpx !important;
+    height: 56rpx !important;
+    min-height: 56rpx!important;
+    font-weight: 400!important;
+    font-size: 12px!important;
+    border-radius: 10rpx!important;
+    border: 1px solid #6988FE!important;
+
+
+}
+/*弹出层*/
+.pop-bg{
+    background: none!important;
+}

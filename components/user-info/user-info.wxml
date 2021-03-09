@@ -1,0 +1,30 @@
+<view class="page__bd page__bd_spacing avatar-wrapper">
+    <block wx:if="{{!hasUserInfo }}" >
+        <view class="weui-flex ">
+            <view class="weui-flex__item-3 no-login-user">
+                <view class="user-icon"><icon class="./iconfont/iconuser:before" ></icon></view>
+                <view class="user-btn"><button  open-type="getUserInfo" bindgetuserinfo="getUserInfo" size="mini" class="user-btn-mini">授权</button></view>
+            </view>
+            </view>
+    </block>
+    <block wx:else>
+        <view class="weui-flex ">
+            <view class="weui-flex__item no-login-user">
+                <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                
+            </view>
+                <view class="weui-flex__item-3">
+                <view class="userinfo-item">
+                    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                    <text  class="userinfo-success">荣耀皇冠</text>
+                </view>
+            </view>
+    
+            <view class="weaui-flex__item">
+                <van-tag round type="primary" custom-class="share-btn">分享</van-tag>
+            </view>
+    
+        </view>
+        
+    </block>
+</view>

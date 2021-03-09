@@ -1,0 +1,4 @@
+<!--pages/me/showPDF/showPDF.wxml-->
+<!-- <web-view src="{{Url}}" bindmessage="" ></web-view> -->
+<web-view wx:if="{{ios}}" src="{{url}}"></web-view>
+

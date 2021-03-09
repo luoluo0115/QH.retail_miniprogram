@@ -1,0 +1,27 @@
+<!--components/generate-pic/generate-pic.wxml-->
+<view class="generate-pic-box" catchtouchmove="return">
+  <scroll-view scroll-y class='filterDataView'>
+  <view class="mask" wx:if="{{spinning}}">
+    <view class="mask-cont">
+      <view class="loading"></view><view class="loading-text">加载中...</view>
+    </view>
+  </view>
+  <block hidden="{{!spinning}}">
+    <canvas
+      class="canvas"
+      style="{{'width: ' + (canvasW) + 'px; height: ' + (canvasH) + 'px;'}}"
+      canvas-id="myCanvas"
+      hidden="{{canvasHidden}}" class="canvas"></canvas>
+
+      <view class="generate-pic-btm">
+        <!-- <view class="save-text">保存图片，分享至朋友圈</view> -->
+        <view class="save-btn-box flex-">
+          <view class="save-btn" bindtap="save">保存图片</view>
+        </view>
+     
+      <view></view>
+    </view>
+  </block>
+  </scroll-view>
+</view>
+<van-toast id="van-toast" />

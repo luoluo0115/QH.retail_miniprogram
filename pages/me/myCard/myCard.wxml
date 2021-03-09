@@ -1,0 +1,160 @@
+<!--pages/me/myCard/myCard.wxml-->
+<view class="header-container">
+    <image class='header-bg' src = '../../../images/mini/header-bg.png'></image>
+</view>
+<view class="page center-container">
+    <view class="page__bd page__bd_spacing userContent">
+        <view class="myCard">
+            <view class="weui-flex ">
+                <view class="weui-flex__item no-login-user">
+                    <view class="userinfo-avatar">
+                        <open-data  type="userAvatarUrl"></open-data>
+                    </view> 
+                    <image class='human-logo' src ="{{myNamecardList.honor_logo}}"></image>
+                </view>
+                <view class="weui-flex__item-3">
+                    <view class="userinfo-item">
+                        <view class="userinfo-nickname" wx:if="{{myNamecardList.dispaly_name==''}}"><open-data  type="userNickName"></open-data></view>
+                        <view class="userinfo-nickname" wx:if="{{myNamecardList.dispaly_name!=''}}">{{myNamecardList.dispaly_name}}</view>
+                    </view>
+                </view>
+        
+                <view class="weaui-flex__item user-btn" >
+                    <view class="wechart-btn"> 
+                        <image src="{{programCode}}" class="img-program"/>
+                    </view>
+                    
+                </view>
+            </view>
+                
+            <view class="weui-flex userinfo-wrapper">
+               
+                <view class="userinfo-list weui-flex__item-3">
+                    <block wx:for="{{nameCardInfo}}" wx:key="index">
+                            <view class="item" wx:if="{{item.displayName=='手机'}}">
+                                <icon class="./iconfont/icondianhuazhengzaibohao:before" custom-class="score-icon-left"></icon>
+                                <view class="item-text"> {{myNamecardList.mobile_phone}}</view>
+                            </view>
+                            <view class="item" wx:elif="{{item.displayName=='地址'&&item.isDisplay=='Y'}}">
+                                <icon class="./iconfont/iconxiazai19:before" custom-class="score-icon-left"></icon>
+                                <view class="item-text"> {{myNamecardList.address}}</view>
+                            </view>
+                            <view class="item" wx:elif="{{item.displayName=='身份'&&item.isDisplay=='Y'}}">
+                                <icon class="./iconfont/iconshimingrenzheng1:before" custom-class="score-icon-left"></icon>
+                                <view class="item-text"> {{myNamecardList.title}}</view>
+                            </view>
+                           <view class="item" wx:if="{{item.displayName=='微信'&&item.isDisplay=='Y'}}">
+                                <icon class="./iconfont/iconwechat:before" custom-class="score-icon-left"></icon>
+                                <view class="item-text"> {{myNamecardList.wechat}}</view>
+                            </view>
+                    </block>
+                </view>
+                <view class="weui-flex__item" >
+                    <block wx:for="{{nameCardInfo}}" wx:key="index">
+                        <view class="item-zc" wx:if="{{item.displayName=='邮箱'&&item.isDisplay=='Y'}}">{{myNamecardList.email}}</view>
+                    </block>
+                </view>
+                
+            </view>
+           
+        </view>
+         <button class="shareme-btn" size="large" bindtap='onTapShareShow'>分享名片</button>
+        <view class="user-list  {{iphone}}">
+            <view class="title">电子名片自定义</view>
+            <view class="user-list-wrapper" >
+                <van-cell-group>
+                    <van-cell title="名片样式">
+                        <van-icon slot="right-icon" name="setting-o" class="custom-icon" bindtap="goMyCardSetting"/>
+                    </van-cell>
+                    <van-cell custom-class="share-text" title="分享标题" value="您好,这是我的电子名片,望惠存" border="{{ false }}" />
+                </van-cell-group>
+            </view>
+            <view class="title">基本信息</view>
+            <form bindsubmit="bindSave">
+                <view class="user-list-wrapper" >
+                    <view class="form-box">
+                            <view class="row-wrap">
+                                <view class="label">姓名</view>
+                                <view class="label-right">
+                                    <input name="dispaly_name" class="input" type="text" placeholder="请输入您的姓名" value="{{dispaly_name}}{{myNamecardList.dispaly_name}}" />
+                                </view>
+                            </view>
+                            <!-- <view class="row-wrap">
+                                <view class="label">电话</view>
+                                <view class="label-right">
+                                    <input name="telephone" class="input" maxlength="11" type="number" placeholder="请输入您的电话" value="{{telephone}}{{myNamecardList.telephone}}" />
+                                </view>
+                            </view> -->
+                            <view class="row-wrap">
+                                <view class="label">手机</view>
+                                <view class="label-right">
+                                    <view wx:if="{{myNamecardList.mobile_phone==''||myNamecardList.mobile_phone=='undefined'}}"  bindtap="toPhone" class="gophone">
+                                        绑定手机
+                                    </view>
+                                    <view wx:else>
+                                        {{myNamecardList.mobile_phone}}
+                                    </view>
+                                    
+                                    <!-- <input name="mobile_phone" class="input" maxlength="11" type="number" placeholder="11位手机号码" value="{{mobile_phone}}" /> -->
+                                </view>
+                            </view>
+                            <view class="row-wrap">
+                                <view class="label">身份</view>
+                                <view class="label-right">
+                                    <input name="title" class="input" type="text" placeholder="请输入您的职位" value="{{title}}{{myNamecardList.title}}" />
+                                </view>
+                            </view>
+                            <!-- <view class="row-wrap">
+                                <view class="label">公司</view>
+                                <view class="label-right">
+                                    <input name="spread_title" class="input" type="text" placeholder="请输入您的公司" value="{{spread_title}}{{myNamecardList.spread_title}}" />
+                                </view>
+                            </view> -->
+                            <view class="addr-details">
+                                <view class="label">地址</view>
+                                <view class="label-right">
+                                    <textarea name="address" auto-height placeholder="请输入您的地址" value="{{address}}{{myNamecardList.address}}" />
+                                </view>
+                            </view>
+                            <view class="row-wrap">
+                                <view class="label">微信</view>
+                                <view class="label-right">
+                                    <input name="wechat" class="input" type="text" placeholder="请输入您的微信" value="{{wechat}}{{myNamecardList.wechat}}" />
+                                </view>
+                            </view>
+                            <view class="row-wrap">
+                                <view class="label">邮箱</view>
+                                <view class="label-right">
+                                    <input name="email" class="input" type="text" placeholder="请输入您的邮箱" value="{{email}}{{myNamecardList.email}}" />
+                                </view>
+                            </view>
+                            
+                    </view>      
+                    
+                </view>
+                <button class="save-btn" formType="submit" size="large" >保存</button>
+            </form>
+        </view>
+    </view>
+</view>
+<van-toast id="van-toast" />
+<van-popup show="{{ show}}"  position="bottom"
+custom-style="height: 14%;"
+bind:close="onClose" z-index="99999">
+    <view class="weui-flex popup-wrapper">
+        <view class="weui-flex__item weixin">
+            <button data-id="1" class='share-btn'  open-type="share"> 
+                <icon class="./iconfont/iconweixin:before" ></icon>
+            </button>
+            <view class="wechart-text">发送好友</view>
+        </view>
+         
+        <view class="weui-flex__item bill">
+            <icon class="./iconfont/icongerenyewushouli:before" bindtap='onTapShareMe'></icon>
+            <view>保存海报</view>
+        </view>
+        
+    </view>
+</van-popup>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+

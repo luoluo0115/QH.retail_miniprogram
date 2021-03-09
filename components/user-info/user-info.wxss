@@ -1,0 +1,122 @@
+.header-container {
+    /* display: flex;
+    flex-direction: row; */
+    height: 300rpx;
+    background-color: #677CFB;
+    align-items: center;
+    position: relative;
+  }
+  
+  .header-bg{
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* 名称和头像 */
+  
+  .userContent{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0rpx;
+  }
+  
+  .header-avatar {
+    background-color: #fff;
+    width: 90rpx;
+    height: 90rpx;
+    margin: 0 20rpx;
+    border-radius: 50%;
+  }
+  
+  .header-nickname {
+    color: #fff;
+    font-size: 30rpx;
+  }
+  
+  /* 帐号管理和信息 */
+  .header-userInfo{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 120rpx;
+    margin-left: auto;/*靠右*/
+  }
+  
+  .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .userinfo-avatar {
+  width: 96rpx;
+  height: 96rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border:2px solid #fff;
+  }
+  
+  
+  .userinfo-nickname {
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  top: 15px;
+  position: relative;
+  }
+  .userinfo-success{
+  font-size: 12px;
+  display: block;
+  top: 18px;
+  position: relative;
+  color: #fff;
+  
+  }
+  
+  .usermotto {
+  margin-top: 200px;
+  }
+  
+  .user-icon{
+  width: 96rpx;
+  height: 96rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border:2px solid #fff;
+  background: #CCD3FD;
+  text-align: center;
+  }
+  .user-icon icon{
+  color:#6B7EFF;
+  font-size: 28px;
+  
+  }
+  .no-login-user{
+  display: inline-block;
+  
+  }
+  .user-icon,.user-btn{
+  display: inline-block;
+  
+  }
+  .user-btn{
+  bottom: -5px;
+  position: relative;
+  
+  
+  }
+  .user-btn-mini{
+  font-size: 12px!important;
+  line-height: 18px!important;
+  height: 18px!important;
+  font-weight: 200;
+  }
+  .share-btn{
+    position: relative;
+    top: 48rpx;
+    background-color: #fff!important;
+    color: #6B7EFF!important;
+  
+  }

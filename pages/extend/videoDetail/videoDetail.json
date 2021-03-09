@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth",
+    "txv-video": "plugin://tencentvideo/video"
+  },
+  "navigationBarTitleText": "视频详情",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white"
+}

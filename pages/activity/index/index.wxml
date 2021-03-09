@@ -1,0 +1,54 @@
+<!--pages/activity/activity.wxml-->
+<view class="guide-wrapper">
+    <view class="img-item item-01">
+        <image class="img" src="{{imgUrls[0]}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+         <view class="goActive" bindtap="goRule" data-type="active-rule">活动规则></view>
+        <view class="content">
+            <view class="money"><text>¥ </text>188.00<text> 元</text></view>
+            <view class="time">离活动结束仅剩<text>{{time}}</text>天</view>
+            <view class="gomoney" bindtap="goMyWallet">去提现</view>
+        </view>
+    </view>
+    <view class="img-item item-02">
+         <image class="img" src="{{imgUrls[1]}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+    </view>
+    <view class="img-item item-03" >
+        <image class="img" src="{{imgUrls[2]}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+            <view class="gobtn" wx:if="{{status1=='N'}}" bindtap="goRule" data-type="active-cert">去完成</view>
+        <view class="gobtn cancel" wx:if="{{status1=='C'}}">已完成</view>
+    </view>
+    <view class="img-item item-04" >
+        <image class="img" src="{{imgUrls[3]}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+            <view class="gobtn" wx:if="{{status1=='C'&&status2=='N'}}" bindtap="goRule" data-type="active-share">去完成</view>
+        <view class="gobtn cancel" wx:if="{{status2=='C'}}">已完成</view>
+        <view class="gobtn" wx:if="{{status2=='N'&&status1=='N'}}"><icon class="./iconfont/iconsuo:before" ></icon></view>
+    </view>
+    <view class="img-item item-05"  >
+        <image class="img" src="{{imgUrls[4]}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+        <view class="gobtn" wx:if="{{status2=='C'&&status3=='N'}}" bindtap="goRule" data-type="active-card">去完成</view>
+        <view class="gobtn cancel" wx:if="{{status3=='C'}}">已完成</view>
+        <view class="gobtn" wx:if="{{status2=='N'&&status3=='N'}}"><icon class="./iconfont/iconsuo:before" ></icon></view>
+    </view>
+    <view class="img-item item-06"  >
+        <image class="img" src="{{imgUrls[5]}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+        <view class="gobtn cancel" wx:if="{{status4=='C'}}">已完成</view>
+        <view class="gobtn" wx:if="{{status4=='N'}}"><icon class="./iconfont/iconsuo:before" ></icon></view>
+    </view>
+    
+    <view class="img-item item-07">
+         <image class="img" src="{{imgUrls[6]}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+        <view class="more-detail" bindtap="goRule" data-type="active-rule"></view>
+       
+    </view>
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule" ></auth>
+<van-toast id="van-toast" />
+
+

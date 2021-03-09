@@ -1,0 +1,64 @@
+<!--pages/myLottery/myLottery.wxml-->
+<!--index.wxml-->
+<view class="guide-wrapper">
+  <view class="img-item item-01">
+        <image class="img" src="{{imgbg1}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+  </view>
+  <view class="img-item item-01">
+      <image class="img" src="{{imgbg2}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+      </image>
+      <view class="ready_times">您累计有<text>{{lottery_ready_times}}</text>次抽奖机会</view>
+      <view class="content">
+          <view class='frame_view'>
+              <view class='frame_row'>
+              <image class='frame_item' style='opacity:{{color[0]}}' src='{{images0}}'></image>
+              <image class='frame_item' style='opacity:{{color[1]}}' src='{{images1}}'></image>
+              <image class='frame_item' style='opacity:{{color[2]}}' src='{{images2}}'></image>
+              </view>
+
+              <view class='frame_row'>
+              <image class='frame_item' style='opacity:{{color[7]}}' src='{{images7}}'></image>
+              <image class='frame_item' src='{{btnconfirm}}' bindtap='{{clickLuck}}'></image>
+              <image class='frame_item' style='opacity:{{color[3]}}' src='{{images3}}'></image>
+              </view>
+
+              <view class='frame_row'>
+              <image class='frame_item' style='opacity:{{color[6]}}' src='{{images6}}'></image>
+              <image class='frame_item' style='opacity:{{color[5]}}' src='{{images5}}'></image>
+              <image class='frame_item' style='opacity:{{color[4]}}' src='{{images4}}'></image>
+              </view>
+          </view>
+      </view>
+  </view>
+  <view class="img-item item-01">
+        <image class="img" src="{{imgbg3}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+        </image>
+        <view class='content-box'>
+            <swiper class='swiper-container' autoplay='true' vertical='true' circular='true' interval='2000'>
+                <block wx:for='{{lotteryRecordInfo}}' wx:key="index">
+                    <swiper-item>
+                        <view class='swiper-item'>恭喜{{item.dispaly_name}}抽取{{item.item_name}} </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+  </view>
+  <view class="img-item item-01">
+      <image class="img" src="{{imgbg4}}" mode="widthFix" lazy-load="true" binderror="" bindload="">
+      </image>
+      <view class='content-record' bindtap="goRecordList">获奖记录 ></view>
+  </view>
+
+
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../pages/activity/rule/rule" ></auth>
+
+<van-popup show="{{ show }}" bind:close="onLottoryClose" custom-class="pop-bg" overlay="false">
+  <view class="activity-bg" >
+     <image class="" src="{{imgUrls}}" mode="widthFix" lazy-load="false" binderror="" bindload="" bindtap="onLottoryGo">
+     </image>
+     <view class="active-close-btn" bindtap="onLottoryClose"></view>
+   </view>
+</van-popup>
+<van-toast id="van-toast" />

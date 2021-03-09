@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarTitleText": "全部视频",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 10
+}

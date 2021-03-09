@@ -1,0 +1,23 @@
+<!--pages/extend/billDetail/billDetail.wxml-->
+<view class="component-page  article-wrapper">
+      <image src="{{imgBgUrl}}"  mode="widthFix" class="img"/>
+      <view class="weui-flex popup-wrapper">
+          <view class="weui-flex__item weixin">
+              <button data-id="1" class='share-btn'  open-type="share"> 
+                  <icon class="./iconfont/iconweixin:before" ></icon>
+              </button>
+              <view>发送好友</view>
+          </view>
+          <view class="weui-flex__item bill">
+              <icon class="./iconfont/icongerenyewushouli:before" bindtap='onTapArticle'></icon>
+              <view>保存海报</view>
+          </view>
+          
+      </view>
+        <van-popup show="{{ showbill}}"  position="center"
+    bind:close="onCloseBill" custom-class="bill-article" closeable >
+           <generate-pic  safe-area-inset-bottom="true" safe-area-inset-top="true" id="myBill" bind:compontpass="compontpass"  achivement_category="{{poster_category}}" spread_id="{{spread_poster_id}}" phrase_content="{{mySpreadPhraseList.phrase_content}}"></generate-pic>
+        </van-popup>
+  
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>

@@ -1,0 +1,168 @@
+<!--pages/achivement/index/index.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<view class="index" >
+    <view class="header-container">
+     <image class='header-bg' src = '../../../images/mini/header-bg.png'></image>
+      <view class='userContent'>
+           <view class="page">
+                <view class="page__bd page__bd_spacing avatar-wrapper">
+                        <view class="weui-flex ">
+                           <block wx:if="{{userInfo}}">
+                                <view class="weui-flex__item no-login-user">
+                                    <view class="userinfo-avatar">
+                                        <open-data  type="userAvatarUrl"></open-data>
+                                    </view> 
+                                    <image class='human-logo' src = '{{commonInfo.honor_logo}}' bindtap="bindgoHonor"></image>
+                                </view>
+                                <view class="weui-flex__item userinfo-overflow">
+                                    <view class="userinfo-item">
+                                        <view class="userinfo-nickname" ><open-data  type="userNickName"></open-data></view>
+                                    </view>
+                                </view>
+                            </block>
+                            <block wx:else>
+                                    <view class="weui-flex__item no-login-user">
+                                        <view class="userinfo-avatar" bindtap="showAuth">
+                                            <open-data  type="userAvatarUrl"></open-data>
+                                        </view> 
+                                    </view>
+                                    <view class="weui-flex__item userinfo-overflow">
+                                        <view class="userinfo-item">
+                                            <view class="userinfo-nickname no-userinfo-nickname" bindtap="showAuth">请登录</view>
+                                        </view>
+                                    </view>
+                            </block>
+                            
+                    
+                            <view class="weui-flex__item-3 user-right" >
+                                <view class="weui-flex user-right-wrapper">
+                                    <block wx:if="{{(commonInfo.rec_count+commonInfo.rec_order_qty)>0}}">
+                                            <block wx:if="{{commonInfo.rec_order_qty>0}}">
+                                                <view class="user-income weui-flex__item" bindtap="gomyOrder">
+                                                    <view class='title'>累计奖金(元)<view class="red" > </view></view>
+                                                    <view class="value">{{filter.numberToFixed(acc_commission_amt)}}</view>
+                                                </view>
+                                            </block>
+                                            <block wx:else>
+                                                <view class="user-income weui-flex__item"  bindtap="gomyExtend" data-active='1'>
+                                                    <view class='title'>累计奖金(元)<view class="red" > </view></view>
+                                                    <view class="value">{{filter.numberToFixed(acc_commission_amt)}}</view>
+                                                </view>
+                                            </block>
+                                    </block>
+                                    <block wx:else>
+                                        <view class="user-income weui-flex__item" bindtap="gomyWallet">
+                                            <view class='title'>累计奖金(元)</view>
+                                            <view class="value">{{filter.numberToFixed(acc_commission_amt)}}</view>
+                                        </view>
+                                    </block>
+                                    <view class="line">|</view>
+                                    <view class="user-empiricvalue weui-flex__item" bindtap="gomyExtend" data-active='0'>
+                                        <view class='title'>经验值(点)</view>
+                                        <view class="value">{{filter.numberToFixedNo(achivement_score)}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        
+                    </view>
+                       
+                </view>
+            </view>
+            
+      </view>
+    </view>
+   
+    <view class="page area-container center-container">
+        <van-tabs animated class="tab-bar" bind:change="onChange">
+            <van-tab title="每周任务" nav-class="tab-nav">
+                <view class="page__bd page__bd_spacing ">
+                    <view class="week-list" wx:for="{{weeklyTasksList}}" wx:key="item">
+                        <view class="week-item weui-flex ">
+                            <view class="weui-flex__item left week-left"> {{item.achivement_desc}} </view>
+                            <view class="weui-flex__item right">
+                                <view wx:if="{{item.is_taken=='N'&& item.ready_flag=='Y'}}" data-id1="{{item.achivement_user_id}}"  data-id2="{{item.achivement_def_id}}" class="btn" bindtap="PostAchievementReceive"  >领取奖励</view>
+                                <view wx:if="{{item.ready_flag=='N'}}" class="btn no-btn" >领取奖励</view>
+                                <view wx:if="{{item.is_taken=='Y'}}" class="btn no-btn" >已领取</view>
+                                <view class="sub">{{item.achivement_money==0?"":"奖励现金:"+item.achivement_money+"元"}} 
+                                                  {{item.achivement_score==0?"":"经验:"+item.achivement_score+"点"}}</view>
+                            </view>
+                        </view>
+                     
+                    </view>
+                </view>
+                
+            </van-tab>
+            <van-tab title="成就碑">
+                <view class="page__bd page__bd_spacing ">
+                 <view class="week-list" wx:for="{{achievementTablet}}" wx:key="item"> 
+                        <view class="week-item weui-flex " >
+                            <view class="left-img">
+                                <image class='people-logo' src = '{{item.achivement_logo}}'></image>
+                                <view class="people-text">{{item.achivement_name}}</view>
+                            </view>
+                            <view class="weui-flex__item left">
+                                {{item.achivement_desc}}
+                            </view>
+                            <view class="weui-flex__item right">
+                               <view wx:if="{{item.is_taken=='N'&& item.ready_flag=='Y'}}" data-id1="{{item.achivement_user_id}}"  data-id2="{{item.achivement_def_id}}" class="btn" bindtap="PostAchievementReceive"  >领取奖励</view>
+                                <view wx:if="{{item.ready_flag=='N'}}" class="btn no-btn" >领取奖励</view>
+                                <view wx:if="{{item.is_taken=='Y'}}" class="btn no-btn" >已领取</view>
+                                <view class="sub">{{item.achivement_money==0?"":"奖励现金:"+item.achivement_money+"元"}} 经验{{item.achivement_score}}点</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <official-account></official-account>
+               
+            </van-tab>
+            <van-tab title="排行榜">
+                <view class="page__bd page__bd_spacing rank-list">
+                    <van-row custom-class="rank-header">
+                        <van-col span="3">排名</van-col>
+                        <van-col span="4">头像</van-col>
+                        <van-col span="4">昵称</van-col>
+                        <van-col span="7">累计收益/元</van-col>
+                        <van-col span="6">经验值/点</van-col>
+                    </van-row>
+                    <!-- 循环列表 -->
+                    <van-row custom-class="rank-item {{index==0?'active':''}}" wx:for="{{rankingList}}" wx:key="index">
+                        <van-col span="3" >
+                            <view  wx:if="{{item.rowno==1}}" class="top-one">
+                                <image src="../../../images/mini/icon-rowno01.png" class="icon-rowno"/>
+                            </view>
+                            <view  wx:elif="{{item.rowno==2}}" class="top-two">
+                                <image src="../../../images/mini/icon-rowno02.png" class="icon-rowno"/>
+                            </view>
+                            <view  wx:elif="{{item.rowno==3}}" class="top-three">
+                                <image src="../../../images/mini/icon-rowno03.png" class="icon-rowno"/>
+                            </view>
+                            <view  wx:else >{{item.rowno}}</view>
+                        </van-col>
+                        <van-col span="4" custom-class="human">
+                            <view class="rank-avatar">
+                             <image src='{{item.logo}}'></image> 
+                            </view>
+                            <image class='human-minilogo' src = '{{item.honor_logo}}'></image>
+                        </van-col>
+                         <van-col span="4">
+                            <view class="nike-name">
+                                {{item.dispaly_name}}
+                             </view>
+                        </van-col>
+                        <van-col span="7">{{item.achivement_money==null?0:item.achivement_money}}</van-col>
+                        <van-col span="6">{{item.achivement_score}}</van-col>
+                    </van-row >
+                </view>
+            </van-tab>
+        </van-tabs>
+    </view>
+</view>
+ <van-popup show="{{showactive}}" bind:close="onActivityClose" custom-class="pop-bg">
+   <view class="activity-bg" >
+     <image class="" src="{{imgUrls}}" mode="widthFix" lazy-load="false" binderror="" bindload="" bindtap="onActivityGo">
+     </image>
+     <view class="active-close-btn" bindtap="onActivityClose"></view>
+   </view>
+ </van-popup>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../pages/activity/rule/rule" ></auth>
+<van-toast id="van-toast" />

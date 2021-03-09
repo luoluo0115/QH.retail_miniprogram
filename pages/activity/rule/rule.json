@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "auth": "../../../components/auth/auth"
+  },
+  "navigationBarBackgroundColor": "#f8f8f8",
+  "navigationBarTitleText": "介绍"
+}

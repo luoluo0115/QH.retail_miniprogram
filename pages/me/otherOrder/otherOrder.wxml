@@ -1,0 +1,188 @@
+<!--pages/me/otherOrder/otherOrder.wxml-->
+<!--pages/me/myOrder/myOrder.wxml-->
+<wxs module="filter" src="../../../utils/money.wxs"></wxs>
+<view class="myOrder">
+    <view class=" page__bd page__bd_spacing">
+        <view class="top-header">
+            <van-row custom-class="header-item">
+                <van-col span="4"  custom-class="human">
+                    <view class="rank-avatar">
+                        <image src="{{logo}}"/>
+                    </view>
+                    <image class='human-minilogo' src='{{honor_logo}}'></image>
+                </van-col>
+                <van-col span="10" custom-class="nike-name">
+                    <view class="item-name">昵称:{{dispaly_name}}</view>
+                    <view class="item-name text-remark" bindtap='bindTapRemark'><icon class="./iconfont/icon3dtouchqiandao:before icon-reamrk" size="12" color="" ></icon><text>{{remark_name==null?'':remark_name}}</text>
+                    </view>
+                </van-col>
+                <van-col span="10" custom-class="text-right">加入时间:{{join_time}}</van-col>
+               
+            </van-row>
+            <van-row custom-class="header-item">
+                <van-col span="8" >经验值:{{achivement_score}}</van-col>
+                <van-col span="8" >累计金额:{{acc_commission_amt}}</van-col>
+                <van-col span="8" custom-class="text-right">提现金额:{{draw_amt}}</van-col>
+            </van-row>
+        </view>
+       
+    </view>
+    <van-tabs active="{{ active }}" bind:change="onChange" sticky>
+        <van-tab title="未领取" >
+            <view class="goods-list">
+                 <block wx:if="{{orderList!=''}}">
+                    <view class="goods-item" wx:for="{{orderList}}" wx:key="index">
+                        <view class="a-goods"  bindtap='bindTapProductDetail' data-item_id="{{item.pre_product_id}}">
+                            <view class="img-box">
+                                <image src="{{item.product_image}}" class="img" />
+                            </view>
+                            <view class="text-box">
+                                <view class="arow arow01">
+                                    <view class="goods-name">{{item.product_name}}</view>
+                                    <view class="goods-price">¥ {{filter.numberToFixed(item.need_pay_amount)}}</view>
+                                </view>
+                                <view class="arow">
+                                    <view class="goods-label">{{item.pre_product_price_value}}</view>
+                                </view>
+                            </view>
+
+                        </view>
+                        <view class="remark" wx:if="{{item.remark!=''}}">备注: {{item.remark}}</view>
+                        <van-row > 
+                            <van-col span="24" custom-class="bottom-wrapper"><view class="pay-btn green" wx:if="{{(item.commission_ratio_amt>0)&&(item.is_withdraw=='N')}}" bindtap="onTapdraw" data-pre_order_id="{{item.pre_order_id}}" data-pre_order_commission_id="{{item.pre_order_commission_id}}">可领取</view><view class="commission_ratio_amt" wx:if="{{item.commission_ratio_amt!='0'}}">{{item.commission_category}}{{item.commission_ratio_amt}}元</view></van-col>
+                        </van-row>
+                       
+                       
+                    </view>
+                 </block>
+                <block wx:else>
+                    <view class="empty">{{msg}}</view>
+                </block>
+            </view>
+        </van-tab>
+        <van-tab title="已领取" >
+             <view class="goods-list">
+                <block wx:if="{{orderList!=''}}">
+                    <view class="goods-item" wx:for="{{orderList}}" wx:key="index">
+                        
+                        <view class="a-goods" bindtap='bindTapProductDetail' data-item_id="{{item.pre_product_id}}">
+                            <view class="img-box">
+                                <image src="{{item.product_image}}" class="img" />
+                            </view>
+                            <view class="text-box">
+                                <view class="arow arow01">
+                                    <view class="goods-name">{{item.product_name}}</view>
+                                    <view class="goods-price">¥ {{filter.numberToFixed(item.need_pay_amount)}}</view>
+                                </view>
+                                <view class="arow">
+                                    <view class="goods-label">{{item.pre_product_price_value}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="remark" wx:if="{{item.remark!=''}}">备注: {{item.remark}}</view>
+                         <van-row > 
+                            <van-col span="24" custom-class="bottom-wrapper">
+                                <view class="pay-btn cancel">已领取</view>
+                                <view class="commission_ratio_amt" wx:if="{{item.commission_ratio_amt!='0'}}">{{item.commission_category}} {{item.commission_ratio_amt}}元</view></van-col>
+                        </van-row>
+                        
+                    </view>
+                 </block>
+                <block wx:else>
+                    <view class="empty">{{msg}}</view>
+                </block>
+            </view>
+        </van-tab>
+        <van-tab title="阅读" >
+             <scroll-view  style='height: 100%;' scroll-y >
+                <view class="page__bd page__bd_spacing rank-list">
+                    <van-row custom-class="rank-header">
+                        <van-col span="8">文章标题</van-col>
+                        <van-col span="12">开始时间-结束时间</van-col>
+                        <van-col span="4">时长</van-col>
+
+                    </van-row>
+                    <block wx:if="{{listDataVisitorsReadList!=''}}">
+                        <!-- 循环列表 -->
+                        <van-row custom-class="rank-item" wx:for="{{listDataVisitorsReadList}}" wx:key="index"  > 
+                            <van-col span="8" custom-class="text-left nike-name share-title">
+                                <text > {{item.title}}</text>
+                            </van-col>
+                            <van-col span="12" custom-class="nike-name">
+                                    {{item.action_time}}- {{item.action_end_time==null?'-':item.action_end_time}}
+                            </van-col>
+                            <van-col span="4" > {{item.read_second}}</van-col>
+                            
+                        </van-row >
+                        <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                    </block>
+                    <view class="loading text-center"  wx:if="{{loading}}">
+                        <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                    </view>
+                        <block wx:if="{{listDataVisitorsReadList==''&&!loading}}" >
+                            <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                    </block>
+                </view>
+            </scroll-view>
+        </van-tab>
+        <van-tab title="分享" >
+            <scroll-view  style='height: 100%;' scroll-y >
+                <view class="page__bd page__bd_spacing rank-list">
+                    <van-row custom-class="rank-header">
+                        <van-col span="11">分享标题</van-col>
+                        <van-col span="5">类别</van-col>
+                        <van-col span="4">阅读</van-col>
+                        <van-col span="4">获客</van-col>
+
+                    </van-row>
+                    <block wx:if="{{listDataVisitorsShareList!=''}}">
+                        <!-- 循环列表 -->
+                        <van-row custom-class="rank-item " wx:for="{{listDataVisitorsShareList}}" wx:key="index" > 
+                            <van-col span="11" custom-class="text-left nike-name share-title">
+                                <text > {{item.article_title}}</text>
+                            </van-col>
+                            <van-col span="5">
+                                    {{item.spread_category}}
+                            </van-col>
+                            <van-col span="4">
+                                    {{item.read_qty}}
+                            </van-col>
+                            <van-col span="4" > {{item.spread_qty}}</van-col>
+                            
+                        </van-row >
+                        <view wx:if="{{noData}}" class="text-center noMore">暂无更多</view>
+                    </block>
+                    <view class="loading text-center"  wx:if="{{loading}}">
+                        <view class="page__bd page__bd_spacing "> <van-loading size="32rpx"></van-loading> </view>
+                    </view>
+                        <block wx:if="{{listDataVisitorsShareList==''&&!loading}}" >
+                            <view class="page__bd page__bd_spacing "> <view class="text-center noMore">暂无数据</view> </view>
+                    </block>
+                </view>
+            </scroll-view>
+        </van-tab>
+        
+    </van-tabs>
+    
+</view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth" url="../../../pages/activity/rule/rule"></auth>
+<van-toast id="van-toast" />
+<van-popup show="{{ show }}" bind:close="onClose">
+    <form bindsubmit="bindSave" bindreset="cleanInput">
+    <van-cell-group custom-class="dialog-input">
+        <van-field
+            value="{{remark_name=='null'?'':remark_name}}"
+            center
+            clearable
+            placeholder="请输入备注的名称"
+            border="{{ false }}"
+            use-button-slot
+            name="remark_name"
+            
+        >
+            <button slot="button" size="small" class="cash-btn" formType="submit">修改</button>
+        </van-field>
+    </van-cell-group>
+    </form>
+</van-popup>
+
