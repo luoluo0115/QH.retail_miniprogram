@@ -4,9 +4,9 @@ var utilMd5 = require('./utils/md5.js');
 App({
   md5Key: "",
   onLaunch: function () {
-    var client_id="qhmarketapi";
-    var client_secret="rrFNcBHd5x1PevbKgKbzsnxWydZmQm";
-    var WeixinAppId='wxa9b6b75004727415'   
+    var client_id="XXXXXX";
+    var client_secret="XXXXXX";
+    var WeixinAppId='XXXXXX'   
     var that = this;
     that.globalData.client_id=client_id;
     that.globalData.client_secret=client_secret;
